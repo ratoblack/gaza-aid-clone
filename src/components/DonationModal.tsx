@@ -84,36 +84,36 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
 
   return (
     <div className="modal-overlay" onClick={handleClose}>
-      <div className="relative w-full max-w-[980px] max-h-[90vh] overflow-auto" onClick={(e) => e.stopPropagation()}>
+      <div className="relative w-full max-w-[900px]" onClick={(e) => e.stopPropagation()}>
         <button
           type="button"
           onClick={handleClose}
-          className="absolute right-3 top-3 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-foreground/80 text-primary-foreground shadow-lg transition-transform hover:scale-110"
+          className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-foreground/80 text-primary-foreground shadow-lg transition-transform hover:scale-110"
           aria-label="Close donation modal"
         >
-          <X className="h-5 w-5" />
+          <X className="h-4 w-4" />
         </button>
 
-        <div className="grid items-start gap-5 md:grid-cols-[1.16fr_0.84fr]">
+        <div className="grid items-stretch gap-4 md:grid-cols-[1.16fr_0.84fr]">
           <div className="modal-panel overflow-hidden">
             <img
               src={heroImage2}
               alt="Human Releaf volunteers delivering a food pack to a child in Gaza"
-              className="h-[300px] w-full object-cover"
+              className="h-[200px] w-full object-cover"
             />
-            <div className="px-7 py-7 sm:px-8">
-              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-md bg-primary overflow-hidden">
+            <div className="px-5 py-4">
+              <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-md bg-primary overflow-hidden">
                 <img src={logo} alt="Human Releaf" className="h-full w-full object-contain" />
               </div>
-              <h3 className="mb-4 text-[1.9rem] font-bold leading-tight text-foreground">
+              <h3 className="mb-2 text-xl font-bold leading-tight text-foreground">
                 Gaza Emergency Appeal
               </h3>
-              <p className="mb-4 text-[1.02rem] leading-8 text-foreground/78">
+              <p className="mb-2 text-sm leading-6 text-foreground/78">
                 Gaza is facing a devastating famine, with children going days without food as their parents
                 struggle to provide even the most basic necessities. Dozens of children have already died
                 from starvation, a heartbreaking reality for families who have already suffered so much.
               </p>
-              <p className="text-[1.02rem] leading-8 text-foreground/78">
+              <p className="text-sm leading-6 text-foreground/78">
                 <strong>Human Releaf</strong> is dedicated to providing food baskets and other basic
                 necessities to those affected by the conflict in Palestine who desperately need our support.
                 <strong> Will you join us in this mission?</strong>
@@ -121,57 +121,57 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
             </div>
           </div>
 
-          <div className="modal-panel p-7 sm:p-8">
-            <div className="mb-6 flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-secondary text-primary">
-                <Shield className="h-5 w-5" />
+          <div className="modal-panel p-5">
+            <div className="mb-4 flex items-center gap-2">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-secondary text-primary">
+                <Shield className="h-4 w-4" />
               </div>
-              <h3 className="text-[1.7rem] font-semibold tracking-tight text-foreground">Secure donation</h3>
+              <h3 className="text-lg font-semibold tracking-tight text-foreground">Secure donation</h3>
             </div>
 
-            <div className="mb-4 grid grid-cols-2 gap-3">
+            <div className="mb-3 grid grid-cols-2 gap-2">
               <button
                 type="button"
                 onClick={() => setIsMonthly(false)}
-                className={`payment-pill px-4 text-base ${!isMonthly ? "active" : ""}`}
+                className={`payment-pill px-3 text-sm ${!isMonthly ? "active" : ""}`}
               >
                 Give once
               </button>
               <button
                 type="button"
                 onClick={() => setIsMonthly(true)}
-                className={`payment-pill gap-2 px-4 text-base ${isMonthly ? "active" : ""}`}
+                className={`payment-pill gap-2 px-3 text-sm ${isMonthly ? "active" : ""}`}
               >
                 <span aria-hidden="true">❤️</span>
                 <span>Monthly</span>
               </button>
             </div>
 
-            <div className="mb-4 grid grid-cols-3 gap-3">
+            <div className="mb-3 grid grid-cols-3 gap-2">
               {presetAmounts.map((amount) => (
                 <button
                   key={amount}
                   type="button"
                   onClick={() => setSelectedAmount(amount)}
-                  className={`payment-pill px-3 text-lg ${selectedAmount === amount ? "active" : ""}`}
+                  className={`payment-pill px-2 text-base ${selectedAmount === amount ? "active" : ""}`}
                 >
                   ${amount.toLocaleString()}
                 </button>
               ))}
             </div>
 
-            <div className="mb-5 flex overflow-hidden rounded-xl border border-border bg-card">
+            <div className="mb-3 flex overflow-hidden rounded-xl border border-border bg-card">
               <div className="relative flex-1">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl text-foreground/75">$</span>
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xl text-foreground/75">$</span>
                 <input
                   type="number"
                   inputMode="decimal"
                   value={selectedAmount}
                   readOnly
-                  className="h-14 w-full bg-card pl-10 pr-4 text-[2rem] text-foreground outline-none"
+                  className="h-11 w-full bg-card pl-9 pr-3 text-xl text-foreground outline-none"
                 />
               </div>
-              <div className="flex items-center border-l border-border bg-muted px-4 text-sm font-medium text-muted-foreground">
+              <div className="flex items-center border-l border-border bg-muted px-3 text-xs font-medium text-muted-foreground">
                 USD
               </div>
             </div>
@@ -180,7 +180,7 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
               <button
                 type="button"
                 onClick={() => setShowComment(true)}
-                className="mb-5 text-sm text-foreground/72 underline underline-offset-2"
+                className="mb-3 text-xs text-foreground/72 underline underline-offset-2"
               >
                 Add comment
               </button>
@@ -189,7 +189,7 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="Write a comment..."
-                className="mb-5 h-20 w-full resize-none rounded-xl border border-border bg-card p-3 text-sm text-foreground outline-none focus:border-ring"
+                className="mb-3 h-16 w-full resize-none rounded-xl border border-border bg-card p-2 text-xs text-foreground outline-none focus:border-ring"
               />
             )}
 
@@ -197,11 +197,11 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
               type="button"
               onClick={handleDonate}
               disabled={isLoading}
-              className="payment-primary-button text-xl"
+              className="payment-primary-button text-base"
             >
               {isLoading ? (
                 <span className="flex items-center justify-center gap-2">
-                  <Loader2 className="h-5 w-5 animate-spin" />
+                  <Loader2 className="h-4 w-4 animate-spin" />
                   Processing...
                 </span>
               ) : (
@@ -211,7 +211,7 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
           </div>
         </div>
 
-        <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-center text-xs text-primary">
+        <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-center text-[0.65rem] text-primary">
           <a href="#" className="hover:underline">
             Is my donation secure?
           </a>
