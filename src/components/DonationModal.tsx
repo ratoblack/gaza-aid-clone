@@ -84,141 +84,137 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
 
   return (
     <div className="modal-overlay" onClick={handleClose}>
-      <div className="relative w-full max-w-[900px]" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="modal-panel relative w-full max-w-[420px] overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           type="button"
           onClick={handleClose}
-          className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-foreground/80 text-primary-foreground shadow-lg transition-transform hover:scale-110"
+          className="absolute right-2 top-2 z-20 flex h-7 w-7 items-center justify-center rounded-full bg-foreground/70 text-primary-foreground shadow-lg transition-transform hover:scale-110"
           aria-label="Close donation modal"
         >
-          <X className="h-4 w-4" />
+          <X className="h-3.5 w-3.5" />
         </button>
 
-        <div className="grid items-stretch gap-4 md:grid-cols-[1.16fr_0.84fr]">
-          <div className="modal-panel overflow-hidden">
-            <img
-              src={heroImage2}
-              alt="Human Releaf volunteers delivering a food pack to a child in Gaza"
-              className="h-[200px] w-full object-cover"
-            />
-            <div className="px-5 py-4">
-              <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-md bg-primary overflow-hidden">
-                <img src={logo} alt="Human Releaf" className="h-full w-full object-contain" />
-              </div>
-              <h3 className="mb-2 text-xl font-bold leading-tight text-foreground">
-                Gaza Emergency Appeal
-              </h3>
-              <p className="mb-2 text-sm leading-6 text-foreground/78">
-                Gaza is facing a devastating famine, with children going days without food as their parents
-                struggle to provide even the most basic necessities. Dozens of children have already died
-                from starvation, a heartbreaking reality for families who have already suffered so much.
-              </p>
-              <p className="text-sm leading-6 text-foreground/78">
-                <strong>Human Releaf</strong> is dedicated to providing food baskets and other basic
-                necessities to those affected by the conflict in Palestine who desperately need our support.
-                <strong> Will you join us in this mission?</strong>
-              </p>
+        {/* Hero image + brief text */}
+        <div className="relative h-[120px] w-full overflow-hidden">
+          <img
+            src={heroImage2}
+            alt="Human Releaf volunteers delivering a food pack to a child in Gaza"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
+          <div className="absolute bottom-2 left-3 right-3 flex items-end gap-2">
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded bg-primary overflow-hidden">
+              <img src={logo} alt="Human Releaf" className="h-full w-full object-contain" />
             </div>
-          </div>
-
-          <div className="modal-panel p-5">
-            <div className="mb-4 flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-secondary text-primary">
-                <Shield className="h-4 w-4" />
-              </div>
-              <h3 className="text-lg font-semibold tracking-tight text-foreground">Secure donation</h3>
-            </div>
-
-            <div className="mb-3 grid grid-cols-2 gap-2">
-              <button
-                type="button"
-                onClick={() => setIsMonthly(false)}
-                className={`payment-pill px-3 text-sm ${!isMonthly ? "active" : ""}`}
-              >
-                Give once
-              </button>
-              <button
-                type="button"
-                onClick={() => setIsMonthly(true)}
-                className={`payment-pill gap-2 px-3 text-sm ${isMonthly ? "active" : ""}`}
-              >
-                <span aria-hidden="true">❤️</span>
-                <span>Monthly</span>
-              </button>
-            </div>
-
-            <div className="mb-3 grid grid-cols-3 gap-2">
-              {presetAmounts.map((amount) => (
-                <button
-                  key={amount}
-                  type="button"
-                  onClick={() => setSelectedAmount(amount)}
-                  className={`payment-pill px-2 text-base ${selectedAmount === amount ? "active" : ""}`}
-                >
-                  ${amount.toLocaleString()}
-                </button>
-              ))}
-            </div>
-
-            <div className="mb-3 flex overflow-hidden rounded-xl border border-border bg-card">
-              <div className="relative flex-1">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xl text-foreground/75">$</span>
-                <input
-                  type="number"
-                  inputMode="decimal"
-                  value={selectedAmount}
-                  readOnly
-                  className="h-11 w-full bg-card pl-9 pr-3 text-xl text-foreground outline-none"
-                />
-              </div>
-              <div className="flex items-center border-l border-border bg-muted px-3 text-xs font-medium text-muted-foreground">
-                USD
-              </div>
-            </div>
-
-            {!showComment ? (
-              <button
-                type="button"
-                onClick={() => setShowComment(true)}
-                className="mb-3 text-xs text-foreground/72 underline underline-offset-2"
-              >
-                Add comment
-              </button>
-            ) : (
-              <textarea
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                placeholder="Write a comment..."
-                className="mb-3 h-16 w-full resize-none rounded-xl border border-border bg-card p-2 text-xs text-foreground outline-none focus:border-ring"
-              />
-            )}
-
-            <button
-              type="button"
-              onClick={handleDonate}
-              disabled={isLoading}
-              className="payment-primary-button text-base"
-            >
-              {isLoading ? (
-                <span className="flex items-center justify-center gap-2">
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                  Processing...
-                </span>
-              ) : (
-                "Donate"
-              )}
-            </button>
+            <h3 className="text-sm font-bold leading-tight text-foreground">
+              Gaza Emergency Appeal
+            </h3>
           </div>
         </div>
 
-        <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-center text-[0.65rem] text-primary">
-          <a href="#" className="hover:underline">
-            Is my donation secure?
-          </a>
-          <span className="text-muted-foreground">•</span>
-          <a href="#" className="hover:underline">
-            Can I cancel my recurring donation?
-          </a>
+        <div className="px-4 pt-2 pb-1">
+          <p className="text-xs leading-[1.4] text-foreground/75">
+            Gaza faces devastating famine. <strong>Human Releaf</strong> delivers food baskets to families in desperate need. <strong>Will you help?</strong>
+          </p>
+        </div>
+
+        {/* Payment section */}
+        <div className="px-4 pb-4 pt-2">
+          <div className="mb-2 flex items-center gap-1.5">
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-secondary text-primary">
+              <Shield className="h-3 w-3" />
+            </div>
+            <span className="text-xs font-semibold text-foreground">Secure donation</span>
+          </div>
+
+          <div className="mb-2 grid grid-cols-2 gap-1.5">
+            <button
+              type="button"
+              onClick={() => setIsMonthly(false)}
+              className={`payment-pill px-2 text-xs !min-h-[2.25rem] ${!isMonthly ? "active" : ""}`}
+            >
+              Give once
+            </button>
+            <button
+              type="button"
+              onClick={() => setIsMonthly(true)}
+              className={`payment-pill gap-1.5 px-2 text-xs !min-h-[2.25rem] ${isMonthly ? "active" : ""}`}
+            >
+              <span aria-hidden="true">❤️</span>
+              <span>Monthly</span>
+            </button>
+          </div>
+
+          <div className="mb-2 grid grid-cols-5 gap-1.5">
+            {presetAmounts.map((amount) => (
+              <button
+                key={amount}
+                type="button"
+                onClick={() => setSelectedAmount(amount)}
+                className={`payment-pill px-1 text-sm !min-h-[2.25rem] ${selectedAmount === amount ? "active" : ""}`}
+              >
+                ${amount}
+              </button>
+            ))}
+          </div>
+
+          <div className="mb-2 flex overflow-hidden rounded-lg border border-border bg-card">
+            <div className="relative flex-1">
+              <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-base text-foreground/75">$</span>
+              <input
+                type="number"
+                inputMode="decimal"
+                value={selectedAmount}
+                readOnly
+                className="h-9 w-full bg-card pl-7 pr-2 text-base text-foreground outline-none"
+              />
+            </div>
+            <div className="flex items-center border-l border-border bg-muted px-2.5 text-[0.65rem] font-medium text-muted-foreground">
+              USD
+            </div>
+          </div>
+
+          {!showComment ? (
+            <button
+              type="button"
+              onClick={() => setShowComment(true)}
+              className="mb-2 text-[0.65rem] text-foreground/65 underline underline-offset-2"
+            >
+              Add comment
+            </button>
+          ) : (
+            <textarea
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              placeholder="Write a comment..."
+              className="mb-2 h-12 w-full resize-none rounded-lg border border-border bg-card p-2 text-xs text-foreground outline-none focus:border-ring"
+            />
+          )}
+
+          <button
+            type="button"
+            onClick={handleDonate}
+            disabled={isLoading}
+            className="payment-primary-button text-sm !min-h-[2.75rem]"
+          >
+            {isLoading ? (
+              <span className="flex items-center justify-center gap-2">
+                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                Processing...
+              </span>
+            ) : (
+              "Donate"
+            )}
+          </button>
+
+          <div className="mt-2 flex flex-wrap items-center justify-center gap-1.5 text-center text-[0.6rem] text-primary">
+            <a href="#" className="hover:underline">Is my donation secure?</a>
+            <span className="text-muted-foreground">•</span>
+            <a href="#" className="hover:underline">Can I cancel my recurring donation?</a>
+          </div>
         </div>
       </div>
     </div>
