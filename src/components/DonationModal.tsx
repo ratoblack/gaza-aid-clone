@@ -98,7 +98,7 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
         </button>
 
         {/* Hero image + brief text */}
-        <div className="relative h-[120px] w-full overflow-hidden">
+        <div className="relative h-[110px] w-full overflow-hidden">
           <img
             src={heroImage2}
             alt="Human Releaf volunteers delivering a food pack to a child in Gaza"
@@ -115,14 +115,14 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
           </div>
         </div>
 
-        <div className="px-4 pt-2 pb-1">
+        <div className="px-4 py-1.5">
           <p className="text-xs leading-[1.4] text-foreground/75">
             Gaza faces devastating famine. <strong>Human Releaf</strong> delivers food baskets to families in desperate need. <strong>Will you help?</strong>
           </p>
         </div>
 
         {/* Payment section */}
-        <div className="px-4 pb-4 pt-2">
+        <div className="px-4 pb-3 pt-1">
           <div className="mb-2 flex items-center gap-1.5">
             <div className="flex h-6 w-6 items-center justify-center rounded-full bg-secondary text-primary">
               <Shield className="h-3 w-3" />
