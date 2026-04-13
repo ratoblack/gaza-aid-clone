@@ -42,7 +42,7 @@ serve(async (req) => {
       line_items: [{ price: priceId, quantity: 1 }],
       mode: "payment",
       ui_mode: "embedded",
-      return_url: `${req.headers.get("origin")}/`,
+      return_url: `${req.headers.get("origin")}/?payment=success`,
     });
 
     return new Response(JSON.stringify({ 
