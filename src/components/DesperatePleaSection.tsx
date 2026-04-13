@@ -32,7 +32,7 @@ const DesperatePleaSection = ({ onDonateClick }: DesperatePleaProps) => {
             onClick={onDonateClick}
             className="inline-flex w-full max-w-[780px] items-center justify-center bg-foreground py-5 text-2xl font-bold uppercase tracking-wider text-primary-foreground transition-transform hover:scale-[1.01]"
           >
-            I WANT TO HELP
+            HELP NOW
           </button>
         </div>
 
