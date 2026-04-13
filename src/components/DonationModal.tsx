@@ -1,8 +1,15 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Shield, X, ArrowLeft, Loader2 } from "lucide-react";
+import { loadStripe } from "@stripe/stripe-js";
+import {
+  EmbeddedCheckoutProvider,
+  EmbeddedCheckout,
+} from "@stripe/react-stripe-js";
 import { supabase } from "@/integrations/supabase/client";
 import heroImage2 from "@/assets/hero-2.png";
 import logo from "@/assets/logo.png";
+
+const stripePromise = loadStripe("pk_live_51TIzxZ1VLef389f2LHcQqwQMBgGYlB0hSbDXaKb6TG6BL3xQhCL3k3NTX7dBIesFCXLtVfxeXqJgTPkQTuRmqsM00LXxwCLBu");
 
 interface DonationModalProps {
   isOpen: boolean;
@@ -17,50 +24,54 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
   const [isMonthly, setIsMonthly] = useState(false);
   const [showComment, setShowComment] = useState(false);
   const [comment, setComment] = useState("");
-  const [checkoutUrl, setCheckoutUrl] = useState<string | null>(null);
+  const [showCheckout, setShowCheckout] = useState(false);
+  const [checkoutAmount, setCheckoutAmount] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleClose = () => {
-    setCheckoutUrl(null);
+    setShowCheckout(false);
+    setCheckoutAmount(null);
     onDismiss();
   };
 
-  const handleDonate = async () => {
-    setIsLoading(true);
-    try {
-      const { data, error } = await supabase.functions.invoke("create-donation-checkout", {
-        body: { amount: selectedAmount },
-      });
-      if (error) throw error;
-      if (data?.url) {
-        setCheckoutUrl(data.url);
-      }
-    } catch (err) {
-      console.error("Checkout error:", err);
-    } finally {
-      setIsLoading(false);
-    }
+  const fetchClientSecret = useCallback(async () => {
+    const { data, error } = await supabase.functions.invoke(
+      "create-donation-checkout",
+      { body: { amount: checkoutAmount } }
+    );
+    if (error) throw error;
+    return data.clientSecret;
+  }, [checkoutAmount]);
+
+  const handleDonate = () => {
+    setCheckoutAmount(selectedAmount);
+    setShowCheckout(true);
   };
 
   if (!isOpen) return null;
 
-  if (checkoutUrl) {
+  if (showCheckout && checkoutAmount) {
     return (
       <div className="modal-overlay" onClick={handleClose}>
         <div
-          className="relative w-full max-w-[600px] max-h-[90vh] overflow-hidden rounded-2xl bg-card shadow-2xl"
+          className="relative w-full max-w-[480px] max-h-[90vh] overflow-hidden rounded-2xl bg-card shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex items-center justify-between border-b border-border px-4 py-3">
             <button
               type="button"
-              onClick={() => setCheckoutUrl(null)}
+              onClick={() => {
+                setShowCheckout(false);
+                setCheckoutAmount(null);
+              }}
               className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
               Back
             </button>
-            <span className="text-sm font-medium text-foreground">Secure Checkout</span>
+            <span className="text-sm font-medium text-foreground">
+              Secure Checkout — ${checkoutAmount}
+            </span>
             <button
               type="button"
               onClick={handleClose}
@@ -70,13 +81,14 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
               <X className="h-4 w-4" />
             </button>
           </div>
-          <iframe
-            src={checkoutUrl}
-            className="w-full border-0"
-            style={{ height: "calc(90vh - 52px)" }}
-            title="Stripe Checkout"
-            allow="payment"
-          />
+          <div className="overflow-y-auto" style={{ maxHeight: "calc(90vh - 52px)" }}>
+            <EmbeddedCheckoutProvider
+              stripe={stripePromise}
+              options={{ fetchClientSecret }}
+            >
+              <EmbeddedCheckout />
+            </EmbeddedCheckoutProvider>
+          </div>
         </div>
       </div>
     );

@@ -36,11 +36,11 @@ serve(async (req) => {
     const session = await stripe.checkout.sessions.create({
       line_items: [{ price: priceId, quantity: 1 }],
       mode: "payment",
-      success_url: `${req.headers.get("origin")}/?donation=success`,
-      cancel_url: `${req.headers.get("origin")}/?donation=canceled`,
+      ui_mode: "embedded",
+      return_url: `${req.headers.get("origin")}/?donation=success`,
     });
 
-    return new Response(JSON.stringify({ url: session.url }), {
+    return new Response(JSON.stringify({ clientSecret: session.client_secret }), {
       status: 200,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
