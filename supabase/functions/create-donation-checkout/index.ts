@@ -20,7 +20,8 @@ serve(async (req) => {
   }
 
   try {
-    const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
+    const stripeSecretKey = Deno.env.get("STRIPE_SECRET_KEY") || "";
+    const stripe = new Stripe(stripeSecretKey, {
       apiVersion: "2025-08-27.basil",
     });
 
@@ -33,6 +34,10 @@ serve(async (req) => {
       });
     }
 
+    // Derive publishable key from secret key pattern
+    // sk_live_xxx -> pk_live_xxx, sk_test_xxx -> pk_test_xxx
+    const publishableKey = Deno.env.get("STRIPE_PUBLISHABLE_KEY") || "";
+
     const session = await stripe.checkout.sessions.create({
       line_items: [{ price: priceId, quantity: 1 }],
       mode: "payment",
@@ -40,7 +45,10 @@ serve(async (req) => {
       return_url: `${req.headers.get("origin")}/?donation=success`,
     });
 
-    return new Response(JSON.stringify({ clientSecret: session.client_secret }), {
+    return new Response(JSON.stringify({ 
+      clientSecret: session.client_secret,
+      publishableKey,
+    }), {
       status: 200,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
