@@ -34,22 +34,22 @@ const QuotesSection = ({ onDonateClick }: Props) => {
   const next = () => setI((p) => (p + 1) % quotes.length);
 
   return (
-    <section className="bg-secondary px-5 py-20 sm:py-28">
+    <section className="bg-secondary px-5 py-16 sm:py-28">
       <div className="mx-auto max-w-[1080px]">
-        <div className="grid items-center gap-10 overflow-hidden rounded-3xl bg-card shadow-xl md:grid-cols-2">
-          <img src={q.img} alt="" className="h-full max-h-[460px] w-full object-cover" />
-          <div className="px-7 py-10 sm:p-12">
-            <div className="text-6xl leading-none text-primary">“</div>
-            <p className="mt-2 text-xl font-medium leading-relaxed text-foreground sm:text-2xl">{q.text}</p>
-            <p className="mt-5 text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+        <div className="grid items-stretch gap-0 overflow-hidden rounded-2xl bg-card shadow-xl sm:rounded-3xl md:grid-cols-2">
+          <img src={q.img} alt="" className="h-56 w-full object-cover sm:h-80 md:h-full md:max-h-[460px]" />
+          <div className="px-6 py-8 sm:p-12">
+            <div className="text-5xl leading-none text-primary sm:text-6xl">“</div>
+            <p className="mt-2 text-lg font-medium leading-relaxed text-foreground sm:text-2xl">{q.text}</p>
+            <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground sm:text-sm">
               — {q.source}
             </p>
 
-            <div className="mt-8 flex items-center gap-3">
+            <div className="mt-7 flex flex-wrap items-center gap-3">
               <button
                 type="button"
                 onClick={prev}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground transition hover:bg-primary hover:text-primary-foreground hover:border-primary"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border bg-card text-foreground transition hover:border-primary hover:bg-primary hover:text-primary-foreground"
                 aria-label="Previous quote"
               >
                 <ChevronLeft className="h-5 w-5" />
@@ -57,7 +57,7 @@ const QuotesSection = ({ onDonateClick }: Props) => {
               <button
                 type="button"
                 onClick={next}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground transition hover:bg-primary hover:text-primary-foreground hover:border-primary"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border bg-card text-foreground transition hover:border-primary hover:bg-primary hover:text-primary-foreground"
                 aria-label="Next quote"
               >
                 <ChevronRight className="h-5 w-5" />
@@ -65,7 +65,7 @@ const QuotesSection = ({ onDonateClick }: Props) => {
               <button
                 type="button"
                 onClick={onDonateClick}
-                className="ml-auto inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg transition hover:brightness-110"
+                className="ml-auto inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-lg transition hover:brightness-110 sm:px-6"
               >
                 Feed a Life
               </button>

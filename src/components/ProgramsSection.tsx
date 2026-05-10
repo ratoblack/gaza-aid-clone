@@ -23,22 +23,22 @@ const programs = [
 
 const ProgramsSection = ({ onDonateClick }: Props) => {
   return (
-    <section className="bg-secondary px-5 py-20 sm:py-28">
+    <section className="bg-secondary px-5 py-16 sm:py-28">
       <div className="mx-auto max-w-[1180px]">
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 md:gap-8">
           {programs.map((p) => (
             <article
               key={p.title}
-              className="overflow-hidden rounded-3xl bg-card shadow-xl transition hover:-translate-y-1 hover:shadow-2xl"
+              className="overflow-hidden rounded-2xl bg-card shadow-xl transition hover:-translate-y-1 hover:shadow-2xl sm:rounded-3xl"
             >
-              <img src={p.img} alt={p.title} loading="lazy" className="h-72 w-full object-cover" />
-              <div className="p-7">
-                <h3 className="text-2xl font-bold text-foreground">{p.title}</h3>
+              <img src={p.img} alt={p.title} loading="lazy" className="h-56 w-full object-cover sm:h-72" />
+              <div className="p-6 sm:p-7">
+                <h3 className="text-xl font-bold text-foreground sm:text-2xl">{p.title}</h3>
                 <p className="mt-3 text-base leading-relaxed text-foreground/75">{p.text}</p>
                 <button
                   type="button"
                   onClick={onDonateClick}
-                  className="mt-6 inline-flex items-center gap-2 text-base font-semibold text-primary hover:gap-3 transition-all"
+                  className="mt-5 inline-flex items-center gap-2 text-base font-semibold text-primary transition-all hover:gap-3"
                 >
                   Feed a Life <ArrowRight className="h-4 w-4" />
                 </button>

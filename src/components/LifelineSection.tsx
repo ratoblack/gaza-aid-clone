@@ -9,22 +9,22 @@ interface Props {
 
 const LifelineSection = ({ onDonateClick }: Props) => {
   return (
-    <section className="bg-background px-5 py-20 sm:py-28">
+    <section className="bg-background px-5 py-16 sm:py-28">
       <div className="mx-auto max-w-[1180px]">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div className="grid items-center gap-10 lg:grid-cols-2">
           <div className="relative">
             <img
               src={mealImg}
               alt="Family receiving a hot meal"
-              className="relative z-10 w-full rounded-3xl object-cover shadow-2xl"
+              className="relative z-10 w-full rounded-2xl object-cover shadow-2xl sm:rounded-3xl"
             />
-            <div className="absolute -right-4 -bottom-4 -z-0 h-full w-full rounded-3xl bg-accent/80" />
+            <div className="absolute -right-3 -bottom-3 -z-0 hidden h-full w-full rounded-3xl bg-accent/80 sm:block" />
           </div>
           <div>
-            <h2 className="text-3xl font-extrabold leading-tight text-foreground sm:text-5xl">
+            <h2 className="text-[1.75rem] font-extrabold leading-tight text-foreground sm:text-5xl">
               Provide a Lifeline with a Meal <span aria-hidden="true">🍽️</span>
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-foreground/80">
+            <p className="mt-5 text-base leading-relaxed text-foreground/80 sm:text-lg">
               Every meal you give is a lifeline, a mercy, and a dua answered. It brings relief to the hungry,
               hope to the struggling, and rewards from Allah.{" "}
               <strong>Feed a soul, ease a hardship, and earn endless blessings.</strong>
@@ -32,21 +32,21 @@ const LifelineSection = ({ onDonateClick }: Props) => {
             <button
               type="button"
               onClick={onDonateClick}
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-lg transition hover:brightness-110"
+              className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-lg transition hover:brightness-110 sm:w-auto"
             >
               Feed a Life
             </button>
           </div>
         </div>
 
-        <div className="mt-16 grid gap-5 sm:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:mt-16 sm:grid-cols-3 sm:gap-5">
           {[g1, g2, g3].map((src, i) => (
             <img
               key={i}
               src={src}
               alt="Aid distribution in Gaza"
               loading="lazy"
-              className="h-72 w-full rounded-2xl object-cover shadow-md"
+              className="h-56 w-full rounded-2xl object-cover shadow-md sm:h-72"
             />
           ))}
         </div>
