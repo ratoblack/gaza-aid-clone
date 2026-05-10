@@ -27,7 +27,7 @@ serve(async (req) => {
       apiVersion: "2025-08-27.basil",
     });
 
-    const { amount, isMonthly, comment } = await req.json();
+    const { amount, isMonthly, comment, donor } = await req.json();
     if (!ALLOWED_AMOUNTS.includes(amount)) {
       return new Response(JSON.stringify({ error: "Invalid donation amount" }), {
         status: 400,
@@ -35,6 +35,19 @@ serve(async (req) => {
       });
     }
 
+    const firstName = (donor?.firstName || "").toString().trim().slice(0, 50);
+    const lastName = (donor?.lastName || "").toString().trim().slice(0, 50);
+    const email = (donor?.email || "").toString().trim().slice(0, 255);
+    const phone = donor?.phone ? donor.phone.toString().trim().slice(0, 30) : null;
+
+    if (!firstName || !lastName || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return new Response(JSON.stringify({ error: "Missing or invalid donor info" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const fullName = `${firstName} ${lastName}`;
     const publishableKey = Deno.env.get("STRIPE_PUBLISHABLE_KEY") || "";
     const origin = req.headers.get("origin") || "";
 
@@ -50,15 +63,32 @@ serve(async (req) => {
         }
       : { price: priceMap[amount], quantity: 1 };
 
+    // Find or create a Stripe customer with the donor info
+    const existing = await stripe.customers.list({ email, limit: 1 });
+    const customer = existing.data[0]
+      ? await stripe.customers.update(existing.data[0].id, {
+          name: fullName,
+          phone: phone || undefined,
+        })
+      : await stripe.customers.create({
+          email,
+          name: fullName,
+          phone: phone || undefined,
+        });
+
     const session = await stripe.checkout.sessions.create({
       line_items: [lineItem],
       mode: isMonthly ? "subscription" : "payment",
       ui_mode: "embedded",
+      customer: customer.id,
       return_url: `${origin}/thank-you?payment=success&session_id={CHECKOUT_SESSION_ID}`,
       metadata: {
         is_recurring: String(!!isMonthly),
         amount_usd: String(amount),
         comment: (comment || "").slice(0, 500),
+        donor_first_name: firstName,
+        donor_last_name: lastName,
+        donor_phone: phone || "",
       },
     });
 
@@ -74,6 +104,11 @@ serve(async (req) => {
       is_recurring: !!isMonthly,
       status: "pending",
       comment: (comment || "").slice(0, 500) || null,
+      donor_first_name: firstName,
+      donor_last_name: lastName,
+      donor_name: fullName,
+      donor_email: email,
+      donor_phone: phone,
     });
 
     return new Response(
