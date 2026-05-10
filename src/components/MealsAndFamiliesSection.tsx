@@ -26,24 +26,29 @@ const MealsAndFamiliesSection = ({ onDonateClick }: Props) => {
   ];
 
   return (
-    <section className="bg-background px-5 py-20 sm:py-28">
-      <div className="mx-auto max-w-[1180px] space-y-24">
+    <section className="bg-background px-5 py-16 sm:py-28">
+      <div className="mx-auto max-w-[1180px] space-y-16 sm:space-y-24">
         {blocks.map((b) => (
           <div
             key={b.title}
-            className={`grid items-center gap-12 lg:grid-cols-2 ${b.reverse ? "lg:[&>div:first-child]:order-2" : ""}`}
+            className={`grid items-center gap-8 sm:gap-12 lg:grid-cols-2 ${b.reverse ? "lg:[&>div:first-child]:order-2" : ""}`}
           >
             <div>
-              <img src={b.img} alt={b.title} loading="lazy" className="w-full rounded-3xl object-cover shadow-2xl" />
+              <img
+                src={b.img}
+                alt={b.title}
+                loading="lazy"
+                className="w-full rounded-2xl object-cover shadow-2xl sm:rounded-3xl"
+              />
             </div>
             <div>
-              <h2 className="text-3xl font-extrabold leading-tight text-foreground sm:text-5xl">{b.title}</h2>
-              <p className="mt-6 text-lg leading-relaxed text-foreground/80">{b.body}</p>
-              <p className="mt-4 text-lg font-bold text-foreground">{b.strong}</p>
+              <h2 className="text-[1.75rem] font-extrabold leading-tight text-foreground sm:text-5xl">{b.title}</h2>
+              <p className="mt-5 text-base leading-relaxed text-foreground/80 sm:text-lg">{b.body}</p>
+              <p className="mt-3 text-base font-bold text-foreground sm:text-lg">{b.strong}</p>
               <button
                 type="button"
                 onClick={onDonateClick}
-                className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-lg transition hover:brightness-110"
+                className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-lg transition hover:brightness-110 sm:w-auto"
               >
                 Feed a Life
               </button>
