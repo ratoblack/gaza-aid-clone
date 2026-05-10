@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import LifelineSection from "@/components/LifelineSection";
@@ -13,13 +14,20 @@ const Index = () => {
   const [isDonateOpen, setIsDonateOpen] = useState(false);
   const open = () => setIsDonateOpen(true);
   const close = () => setIsDonateOpen(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("payment") === "success") {
+      navigate("/thank-you", { replace: true });
+    }
+  }, [navigate]);
 
   return (
     <div className="min-h-screen bg-background">
       <a href="#main-content" className="skip-link">Skip to main content</a>
       <Header onDonateClick={open} />
       <main id="main-content">
-
         <HeroSection onDonateClick={open} />
         <LifelineSection onDonateClick={open} />
         <ProgramsSection onDonateClick={open} />

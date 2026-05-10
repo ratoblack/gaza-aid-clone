@@ -6,6 +6,7 @@ import {
   EmbeddedCheckout,
 } from "@stripe/react-stripe-js";
 import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
 import heroImage2 from "@/assets/hero-2.png";
 import logo from "@/assets/logo.png";
 
