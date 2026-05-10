@@ -32,6 +32,22 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
     onDismiss();
   };
 
+  // Close on Escape; lock body scroll while open
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleClose();
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
+
   const fetchClientSecret = useCallback(async () => {
     const { data, error } = await supabase.functions.invoke(
       "create-donation-checkout",
