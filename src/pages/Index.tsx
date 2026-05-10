@@ -16,8 +16,10 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <Header onDonateClick={open} />
-      <main>
+      <main id="main-content">
+
         <HeroSection onDonateClick={open} />
         <LifelineSection onDonateClick={open} />
         <ProgramsSection onDonateClick={open} />
