@@ -169,15 +169,15 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
             alt="Let's build a better tomorrow — Human Releaf"
             className="h-auto w-full object-contain"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
-          <div className="absolute bottom-2 left-3 right-3 flex items-end gap-2">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded bg-primary overflow-hidden">
-              <img src={logo} alt="Human Releaf" className="h-full w-full object-contain" />
-            </div>
-            <h3 id="donation-title" className="text-sm font-bold leading-tight text-foreground">
-              Gaza Emergency Appeal
-            </h3>
+        </div>
+
+        <div className="flex items-center gap-2 px-4 pt-3">
+          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded bg-primary overflow-hidden">
+            <img src={logo} alt="Human Releaf" className="h-full w-full object-contain" />
           </div>
+          <h3 id="donation-title" className="text-sm font-bold leading-tight text-foreground">
+            Gaza Emergency Appeal
+          </h3>
         </div>
 
         <div className="px-4 py-1.5">
