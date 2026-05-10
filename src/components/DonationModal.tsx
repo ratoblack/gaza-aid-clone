@@ -100,6 +100,9 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
     return (
       <div className="modal-overlay" onClick={handleClose}>
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="checkout-title"
           className="relative w-full max-w-[480px] max-h-[90vh] overflow-hidden rounded-2xl bg-card shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
@@ -111,20 +114,21 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
                 setStripePromise(null);
               }}
               className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Back to donation amount selection"
             >
-              <ArrowLeft className="h-4 w-4" />
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
               Back
             </button>
-            <span className="text-sm font-medium text-foreground">
+            <span id="checkout-title" className="text-sm font-medium text-foreground">
               Secure Checkout — ${selectedAmount}
             </span>
             <button
               type="button"
               onClick={handleClose}
               className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-muted transition-colors"
-              aria-label="Close"
+              aria-label="Close checkout"
             >
-              <X className="h-4 w-4" />
+              <X className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
           <div className="overflow-y-auto" style={{ maxHeight: "calc(90vh - 52px)" }}>
@@ -143,6 +147,9 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
   return (
     <div className="modal-overlay" onClick={handleClose}>
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="donation-title"
         className="modal-panel relative w-full max-w-[420px] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
