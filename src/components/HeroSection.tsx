@@ -7,16 +7,20 @@ interface HeroProps {
 
 const HeroSection = ({ onDonateClick }: HeroProps) => {
   return (
-    <section className="relative min-h-[100svh] w-full overflow-hidden">
+    <section
+      aria-labelledby="hero-title"
+      className="relative min-h-[100svh] w-full overflow-hidden"
+    >
       <img
         src={heroImg}
-        alt="Volunteer providing clean water to a child in Gaza"
+        alt=""
+        aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-black/55" aria-hidden="true" />
       <div className="relative z-10 flex min-h-[100svh] items-center justify-center px-5 pt-28 pb-16">
         <div className="max-w-[820px] text-center text-white">
-          <h1 className="text-[2rem] font-extrabold leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl">
+          <h1 id="hero-title" className="text-[2rem] font-extrabold leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl">
             Saving Lives Through{" "}
             <span className="text-accent">Charity</span>
           </h1>

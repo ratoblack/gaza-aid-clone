@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Shield, X, ArrowLeft, Loader2 } from "lucide-react";
 import { loadStripe } from "@stripe/stripe-js";
 import {
@@ -31,6 +31,22 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
     setStripePromise(null);
     onDismiss();
   };
+
+  // Close on Escape; lock body scroll while open
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleClose();
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
 
   const fetchClientSecret = useCallback(async () => {
     const { data, error } = await supabase.functions.invoke(
@@ -84,6 +100,9 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
     return (
       <div className="modal-overlay" onClick={handleClose}>
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="checkout-title"
           className="relative w-full max-w-[480px] max-h-[90vh] overflow-hidden rounded-2xl bg-card shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
@@ -95,20 +114,21 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
                 setStripePromise(null);
               }}
               className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Back to donation amount selection"
             >
-              <ArrowLeft className="h-4 w-4" />
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
               Back
             </button>
-            <span className="text-sm font-medium text-foreground">
+            <span id="checkout-title" className="text-sm font-medium text-foreground">
               Secure Checkout — ${selectedAmount}
             </span>
             <button
               type="button"
               onClick={handleClose}
               className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-muted transition-colors"
-              aria-label="Close"
+              aria-label="Close checkout"
             >
-              <X className="h-4 w-4" />
+              <X className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
           <div className="overflow-y-auto" style={{ maxHeight: "calc(90vh - 52px)" }}>
@@ -127,6 +147,9 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
   return (
     <div className="modal-overlay" onClick={handleClose}>
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="donation-title"
         className="modal-panel relative w-full max-w-[420px] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
@@ -151,7 +174,7 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
             <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded bg-primary overflow-hidden">
               <img src={logo} alt="Human Releaf" className="h-full w-full object-contain" />
             </div>
-            <h3 className="text-sm font-bold leading-tight text-foreground">
+            <h3 id="donation-title" className="text-sm font-bold leading-tight text-foreground">
               Gaza Emergency Appeal
             </h3>
           </div>
