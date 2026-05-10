@@ -174,7 +174,7 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
             <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded bg-primary overflow-hidden">
               <img src={logo} alt="Human Releaf" className="h-full w-full object-contain" />
             </div>
-            <h3 className="text-sm font-bold leading-tight text-foreground">
+            <h3 id="donation-title" className="text-sm font-bold leading-tight text-foreground">
               Gaza Emergency Appeal
             </h3>
           </div>
