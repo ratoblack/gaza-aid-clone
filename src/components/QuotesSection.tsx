@@ -94,6 +94,19 @@ const QuotesSection = ({ onDonateClick }: Props) => {
             </div>
           </div>
         </div>
+
+        <div className="mt-10 overflow-hidden rounded-2xl bg-card shadow-xl sm:mt-14 sm:rounded-3xl">
+          <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+            <iframe
+              className="absolute inset-0 h-full w-full"
+              src="https://www.youtube.com/embed/Sr2nbl0d9aU?rel=0&modestbranding=1"
+              title="Inspirational video"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
