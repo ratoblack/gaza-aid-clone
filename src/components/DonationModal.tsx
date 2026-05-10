@@ -7,7 +7,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
-import heroImage2 from "@/assets/hero-2.png";
+import heroImage2 from "@/assets/donation-modal-hero.png";
 import logo from "@/assets/logo.png";
 
 interface DonationModalProps {
@@ -150,7 +150,7 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
         role="dialog"
         aria-modal="true"
         aria-labelledby="donation-title"
-        className="modal-panel relative w-full max-w-[420px] overflow-hidden"
+        className="modal-panel relative w-full max-w-[480px] max-h-[95vh] overflow-y-auto overflow-x-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -163,11 +163,11 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
         </button>
 
         {/* Hero image + brief text */}
-        <div className="relative h-[110px] w-full overflow-hidden">
+        <div className="relative w-full overflow-hidden">
           <img
             src={heroImage2}
-            alt="Human Releaf volunteers delivering a food pack to a child in Gaza"
-            className="h-full w-full object-cover"
+            alt="Let's build a better tomorrow — Human Releaf"
+            className="h-auto w-full object-contain"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
           <div className="absolute bottom-2 left-3 right-3 flex items-end gap-2">
