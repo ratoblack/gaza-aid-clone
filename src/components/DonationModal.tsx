@@ -40,6 +40,7 @@ const DonationModal = ({ isOpen, onDismiss }: DonationModalProps) => {
   const [comment, setComment] = useState("");
   const [step, setStep] = useState<Step>("amount");
   const [stripePromise, setStripePromise] = useState<ReturnType<typeof loadStripe> | null>(null);
+  const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   // Donor info
@@ -52,6 +53,7 @@ const DonationModal = ({ isOpen, onDismiss }: DonationModalProps) => {
   const handleClose = () => {
     setStep("amount");
     setStripePromise(null);
+    setClientSecret(null);
     onDismiss();
   };
 
@@ -102,6 +104,7 @@ const DonationModal = ({ isOpen, onDismiss }: DonationModalProps) => {
       });
       if (error) throw error;
       if (data?.publishableKey) setStripePromise(loadStripe(data.publishableKey));
+      setClientSecret(data?.clientSecret || null);
       setStep("checkout");
     } catch (err) {
       console.error("Checkout error:", err);
@@ -116,6 +119,7 @@ const DonationModal = ({ isOpen, onDismiss }: DonationModalProps) => {
   };
 
   const stableFetchClientSecret = useCallback(async () => {
+    if (clientSecret) return clientSecret;
     const { data, error } = await supabase.functions.invoke("create-donation-checkout", {
       body: {
         amount: selectedAmount,
@@ -126,7 +130,7 @@ const DonationModal = ({ isOpen, onDismiss }: DonationModalProps) => {
     });
     if (error) throw error;
     return data.clientSecret;
-  }, [selectedAmount, isMonthly, comment, firstName, lastName, email, phone]);
+  }, [clientSecret, selectedAmount, isMonthly, comment, firstName, lastName, email, phone]);
 
   if (!isOpen) return null;
 
