@@ -249,3 +249,32 @@
     border: 1px solid hsl(var(--border));
   }
 }
+
+/* PhoneInput styling to match design system */
+.donor-phone-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+}
+.donor-phone-input .PhoneInputInput {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  outline: none;
+  font-size: 0.875rem;
+  color: hsl(var(--foreground));
+}
+.donor-phone-input .PhoneInputCountry {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.donor-phone-input .PhoneInputCountrySelect {
+  background: transparent;
+  color: hsl(var(--foreground));
+}
