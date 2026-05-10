@@ -180,10 +180,18 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
           </h3>
         </div>
 
-        <div className="px-4 py-1.5">
-          <p className="text-xs leading-[1.4] text-foreground/75">
-            Gaza faces devastating famine. <strong>Human Releaf</strong> delivers food baskets to families in desperate need. <strong>Will you help?</strong>
+        <div className="px-4 py-2 space-y-2">
+          <p className="text-xs leading-[1.45] text-foreground/75">
+            Spotlight is on the ground in Gaza, serving hot meals daily in refugee camps—because no one should go to bed hungry.
           </p>
+          <p className="text-[0.7rem] leading-[1.4] text-foreground/65">
+            Spotlight Humanity is a 501(c)(3) nonprofit, donations are tax-deductible. EIN: 33-1754908
+          </p>
+          <ul className="space-y-0.5 text-xs leading-[1.45] text-foreground/80">
+            <li><span aria-hidden="true">🌍</span> 365 Days a Year, We Serve.</li>
+            <li><span aria-hidden="true">🥘</span> Every Meal is a Lifeline.</li>
+            <li><span aria-hidden="true">💛</span> Your Donation = A Hot Meal for Someone in Need.</li>
+          </ul>
         </div>
 
         {/* Payment section */}
