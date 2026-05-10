@@ -150,6 +150,7 @@ const DonationModal = ({ isOpen, onDismiss }: DonationModalProps) => {
               onClick={() => {
                 setStep("donor");
                 setStripePromise(null);
+                setClientSecret(null);
               }}
               className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Back to donor info"
