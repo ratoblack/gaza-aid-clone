@@ -6,6 +6,7 @@ import {
   EmbeddedCheckout,
 } from "@stripe/react-stripe-js";
 import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
 import heroImage2 from "@/assets/hero-2.png";
 import logo from "@/assets/logo.png";
 
@@ -84,15 +85,14 @@ const DonationModal = ({ isOpen, onDismiss, onDonate }: DonationModalProps) => {
     }
   };
 
-  // Create a stable fetchClientSecret for the provider that returns the already-fetched secret
   const stableFetchClientSecret = useCallback(async () => {
     const { data, error } = await supabase.functions.invoke(
       "create-donation-checkout",
-      { body: { amount: selectedAmount } }
+      { body: { amount: selectedAmount, isMonthly, comment } }
     );
     if (error) throw error;
     return data.clientSecret;
-  }, [selectedAmount]);
+  }, [selectedAmount, isMonthly, comment]);
 
   if (!isOpen) return null;
 

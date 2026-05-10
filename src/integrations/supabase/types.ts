@@ -14,13 +14,66 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      donations: {
+        Row: {
+          amount_cents: number
+          comment: string | null
+          created_at: string
+          currency: string
+          donor_email: string | null
+          donor_name: string | null
+          id: string
+          is_recurring: boolean
+          status: string
+          stripe_payment_intent_id: string | null
+          stripe_session_id: string | null
+          stripe_subscription_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          amount_cents: number
+          comment?: string | null
+          created_at?: string
+          currency?: string
+          donor_email?: string | null
+          donor_name?: string | null
+          id?: string
+          is_recurring?: boolean
+          status?: string
+          stripe_payment_intent_id?: string | null
+          stripe_session_id?: string | null
+          stripe_subscription_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          amount_cents?: number
+          comment?: string | null
+          created_at?: string
+          currency?: string
+          donor_email?: string | null
+          donor_name?: string | null
+          id?: string
+          is_recurring?: boolean
+          status?: string
+          stripe_payment_intent_id?: string | null
+          stripe_session_id?: string | null
+          stripe_subscription_id?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_donation_stats: {
+        Args: never
+        Returns: {
+          total_amount_cents: number
+          total_donors: number
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
