@@ -1,4 +1,5 @@
-import logo from "@/assets/logo.png";
+import logo from "@/assets/spotlight/logo.png";
+import { ArrowRight } from "lucide-react";
 
 interface HeaderProps {
   onDonateClick: () => void;
@@ -6,22 +7,15 @@ interface HeaderProps {
 
 const Header = ({ onDonateClick }: HeaderProps) => {
   return (
-    <header className="fixed inset-x-0 top-0 z-40 bg-primary shadow-sm">
-      <div className="mx-auto flex max-w-[1080px] items-center justify-between px-3 sm:px-4">
-        <div className="flex items-center gap-0">
-          <div className="flex h-[86px] items-center pr-4 sm:pr-5">
-            <img src={logo} alt="Human Releaf" className="h-20 w-20 sm:h-14 sm:w-14 object-contain" />
-          </div>
-          <div className="hidden h-14 border-r border-dashed border-primary-foreground/65 sm:block" />
-          <div className="pl-3 sm:pl-5">
-            <p className="text-2xl font-semibold tracking-tight text-primary-foreground sm:text-[2rem]">
-              Human Releaf
-            </p>
-          </div>
-        </div>
-
-        <button type="button" onClick={onDonateClick} className="header-donate-button text-xs px-3 py-1.5 sm:text-base sm:px-4 sm:py-2">
-          DONATE NOW
+    <header className="absolute inset-x-0 top-0 z-40">
+      <div className="mx-auto flex max-w-[1280px] items-center justify-between px-5 py-5 sm:px-8">
+        <img src={logo} alt="Spotlight Humanity" className="h-9 sm:h-11 w-auto object-contain" />
+        <button
+          type="button"
+          onClick={onDonateClick}
+          className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg transition hover:brightness-110 sm:px-7 sm:py-3 sm:text-base"
+        >
+          Feed a Life
         </button>
       </div>
     </header>
