@@ -9,7 +9,7 @@ const Footer = ({ onDonateClick }: Props) => {
     <footer className="bg-foreground px-5 py-16 text-background">
       <div className="mx-auto max-w-[1180px]">
         <div className="flex flex-col items-center text-center">
-          <img src={logo} alt="Spotlight Humanity" className="h-12 w-auto brightness-0 invert" />
+          <img src={logo} alt="Human Releaf" className="h-12 w-auto brightness-0 invert" />
           <h3 className="mt-8 max-w-[640px] text-2xl font-extrabold sm:text-4xl">
             Provide a Lifeline with a Meal <span aria-hidden="true">🍽️</span>
           </h3>
@@ -25,7 +25,12 @@ const Footer = ({ onDonateClick }: Props) => {
           </button>
         </div>
         <div className="mt-14 border-t border-background/15 pt-6 text-center text-xs text-background/60">
-          © {new Date().getFullYear()} Spotlight Humanity. All rights reserved.
+          <nav className="mb-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-2" aria-label="Legal">
+            <a href="/privacy" className="hover:text-background">Privacy Policy</a>
+            <a href="/terms" className="hover:text-background">Terms of Use</a>
+            <a href="/refund" className="hover:text-background">Refund Policy</a>
+          </nav>
+          © {new Date().getFullYear()} Human Releaf. All rights reserved.
         </div>
       </div>
     </footer>
