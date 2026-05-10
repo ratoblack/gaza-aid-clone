@@ -55,7 +55,7 @@ const QuotesSection = ({ onDonateClick }: Props) => {
           onKeyDown={onKeyDown}
           className="grid items-stretch gap-0 overflow-hidden rounded-2xl bg-card shadow-xl sm:rounded-3xl md:grid-cols-2"
         >
-          <img src={q.img} alt="" aria-hidden="true" className="h-56 w-full object-cover sm:h-80 md:h-full md:max-h-[460px]" />
+          <img loading="lazy" decoding="async" src={q.img} alt="" aria-hidden="true" className="h-56 w-full object-cover sm:h-80 md:h-full md:max-h-[460px]" />
           <div className="px-6 py-8 sm:p-12">
             <div aria-hidden="true" className="text-5xl leading-none text-primary sm:text-6xl">“</div>
             <div aria-live="polite" aria-atomic="true">

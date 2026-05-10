@@ -31,7 +31,7 @@ const ProgramsSection = ({ onDonateClick }: Props) => {
               key={p.title}
               className="overflow-hidden rounded-2xl bg-card shadow-xl transition hover:-translate-y-1 hover:shadow-2xl sm:rounded-3xl"
             >
-              <img src={p.img} alt={p.title} loading="lazy" className="h-56 w-full object-cover sm:h-72" />
+              <img loading="lazy" decoding="async" src={p.img} alt={p.title} loading="lazy" className="h-56 w-full object-cover sm:h-72" />
               <div className="p-6 sm:p-7">
                 <h3 className="text-xl font-bold text-foreground sm:text-2xl">{p.title}</h3>
                 <p className="mt-3 text-base leading-relaxed text-foreground/75">{p.text}</p>
