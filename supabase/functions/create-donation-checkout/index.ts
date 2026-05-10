@@ -54,7 +54,7 @@ serve(async (req) => {
       line_items: [lineItem],
       mode: isMonthly ? "subscription" : "payment",
       ui_mode: "embedded",
-      return_url: `${origin}/?payment=success&session_id={CHECKOUT_SESSION_ID}`,
+      return_url: `${origin}/thank-you?payment=success&session_id={CHECKOUT_SESSION_ID}`,
       metadata: {
         is_recurring: String(!!isMonthly),
         amount_usd: String(amount),
