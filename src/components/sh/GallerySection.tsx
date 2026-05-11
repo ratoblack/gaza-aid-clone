@@ -7,12 +7,12 @@ import g5 from "@/assets/hr/reality-tap.jpg";
 import g6 from "@/assets/hr/how-we-deliver.jpg";
 
 const photos = [
-  { src: g1, alt: "Family inside a tent waving while holding an open Spotlight Humanity food parcel" },
-  { src: g2, alt: "Young girl smiling as a volunteer hands over a food parcel box" },
-  { src: g3, alt: "Three children exploring the contents of a food parcel" },
-  { src: g4, alt: "A volunteer kneels to comfort a smiling boy in the camp" },
-  { src: g5, alt: "A girl drinks water directly from a tap installed by Spotlight Humanity" },
-  { src: g6, alt: "Spotlight Humanity volunteers walking with displaced children through the camp" },
+  { src: g1, alt: "Family inside a tent waving while holding an open Spotlight Humanity food parcel", pos: "center 35%" },
+  { src: g2, alt: "Young girl smiling as a volunteer hands over a food parcel box", pos: "center 30%" },
+  { src: g3, alt: "Three children exploring the contents of a food parcel", pos: "center 40%" },
+  { src: g4, alt: "A volunteer kneels to comfort a smiling boy in the camp", pos: "center 30%" },
+  { src: g5, alt: "A girl drinks water directly from a tap installed by Spotlight Humanity", pos: "center 35%" },
+  { src: g6, alt: "Spotlight Humanity volunteers walking with displaced children through the camp", pos: "center 40%" },
 ];
 
 const GallerySection = () => (
@@ -37,7 +37,7 @@ const GallerySection = () => (
               alt={p.alt}
               loading="lazy"
               className="w-full rounded object-cover"
-              style={{ aspectRatio: "1 / 1" }}
+              style={{ aspectRatio: "1 / 1", objectPosition: p.pos }}
             />
           </FadeIn>
         ))}
