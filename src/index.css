@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,87 +6,75 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 226 19% 12%;
+    /* Brand palette (Human Releaf — warm, dignified) */
+    --cream: 36 38% 93%;          /* #F5F0E8 */
+    --warm-white: 41 56% 97%;     /* #FDFAF4 */
+    --charcoal: 0 0% 11%;         /* #1C1C1C */
+    --gold: 38 56% 51%;           /* #C9933A */
+    --gold-light: 35 71% 67%;     /* #E8B86D */
+    --olive: 84 13% 28%;          /* #4A5240 */
 
-    --card: 0 0% 100%;
-    --card-foreground: 226 19% 12%;
+    /* Mapped semantic tokens (consumed by shadcn + Tailwind) */
+    --background: var(--cream);
+    --foreground: var(--charcoal);
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 226 19% 12%;
+    --card: var(--warm-white);
+    --card-foreground: var(--charcoal);
 
-    --primary: 199 84% 54%;
-    --primary-foreground: 0 0% 100%;
+    --popover: var(--warm-white);
+    --popover-foreground: var(--charcoal);
 
-    --secondary: 199 90% 96%;
-    --secondary-foreground: 199 60% 25%;
+    --primary: var(--gold);
+    --primary-foreground: var(--charcoal);
 
-    --muted: 220 18% 96%;
-    --muted-foreground: 220 8% 45%;
+    --secondary: var(--olive);
+    --secondary-foreground: 0 0% 100%;
 
-    --accent: 45 100% 51%;
-    --accent-foreground: 222 47% 11%;
+    --muted: 36 24% 88%;
+    --muted-foreground: 0 0% 30%;
 
-    --destructive: 0 84% 60%;
+    --accent: var(--gold);
+    --accent-foreground: var(--charcoal);
+
+    --destructive: 0 84% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 14% 88%;
-    --input: 220 14% 88%;
-    --ring: 221 75% 57%;
+    --border: 36 18% 82%;
+    --input: 36 18% 82%;
+    --ring: var(--gold);
 
-    --radius: 0.65rem;
+    --radius: 0.125rem;
 
-    --payment-blue: 221 75% 57%;
-    --payment-blue-foreground: 0 0% 100%;
-    --payment-blue-soft: 221 78% 96%;
-    --overlay: 230 18% 11%;
-    --panel: 220 19% 19%;
-    --panel-foreground: 0 0% 98%;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: var(--cream);
+    --sidebar-foreground: var(--charcoal);
+    --sidebar-primary: var(--gold);
+    --sidebar-primary-foreground: var(--charcoal);
+    --sidebar-accent: var(--warm-white);
+    --sidebar-accent-foreground: var(--charcoal);
+    --sidebar-border: 36 18% 82%;
+    --sidebar-ring: var(--gold);
   }
 
   .dark {
-    --background: 224 24% 8%;
-    --foreground: 0 0% 96%;
-    --card: 224 24% 10%;
-    --card-foreground: 0 0% 96%;
-    --popover: 224 24% 10%;
-    --popover-foreground: 0 0% 96%;
-    --primary: 177 69% 40%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 177 30% 16%;
-    --secondary-foreground: 177 34% 94%;
-    --muted: 224 14% 15%;
-    --muted-foreground: 220 10% 72%;
-    --accent: 358 100% 63%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62% 30%;
+    --background: var(--charcoal);
+    --foreground: var(--cream);
+    --card: 0 0% 14%;
+    --card-foreground: var(--cream);
+    --popover: 0 0% 14%;
+    --popover-foreground: var(--cream);
+    --primary: var(--gold);
+    --primary-foreground: var(--charcoal);
+    --secondary: var(--olive);
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 70%;
+    --accent: var(--gold);
+    --accent-foreground: var(--charcoal);
+    --destructive: 0 62% 35%;
     --destructive-foreground: 0 0% 100%;
-    --border: 224 14% 20%;
-    --input: 224 14% 20%;
-    --ring: 221 75% 57%;
-    --payment-blue: 221 75% 57%;
-    --payment-blue-foreground: 0 0% 100%;
-    --payment-blue-soft: 221 30% 18%;
-    --overlay: 230 18% 5%;
-    --panel: 220 19% 19%;
-    --panel-foreground: 0 0% 98%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 0 0% 22%;
+    --input: 0 0% 22%;
+    --ring: var(--gold);
   }
 }
 
@@ -101,32 +89,32 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: "Poppins", system-ui, sans-serif;
+    font-family: "DM Sans", system-ui, sans-serif;
     overflow-x: hidden;
+    font-feature-settings: "ss01", "ss02";
   }
 
-  /* Accessible focus indicator on all interactive elements */
+  .font-display {
+    font-family: "Cormorant Garamond", "Times New Roman", serif;
+  }
+
   :where(a, button, input, select, textarea, [tabindex]):focus-visible {
-    outline: 3px solid hsl(var(--ring));
+    outline: 2px solid hsl(var(--gold));
     outline-offset: 3px;
-    border-radius: 0.4rem;
+    border-radius: 2px;
   }
 
-  /* Skip link */
   .skip-link {
     position: absolute;
     left: -9999px;
     top: 1rem;
     z-index: 100;
     padding: 0.75rem 1rem;
-    background: hsl(var(--primary));
-    color: hsl(var(--primary-foreground));
-    border-radius: 0.5rem;
+    background: hsl(var(--gold));
+    color: hsl(var(--charcoal));
     font-weight: 600;
   }
-  .skip-link:focus {
-    left: 1rem;
-  }
+  .skip-link:focus { left: 1rem; }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -138,126 +126,129 @@
 }
 
 @layer components {
-  .header-donate-button {
-    @apply inline-flex items-center justify-center bg-accent text-accent-foreground font-bold uppercase tracking-wider;
-    padding: 1rem 1.65rem;
-    border-radius: 0;
-    box-shadow: 0 12px 26px hsl(var(--accent) / 0.2);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* Primary CTA — square-ish, gold, charcoal text */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 font-semibold uppercase;
+    background: hsl(var(--gold));
+    color: hsl(var(--charcoal));
+    padding: 1rem 2.5rem;
+    font-size: 0.9375rem;
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+    transition: background-color 300ms ease, color 300ms ease, transform 200ms ease;
+  }
+  .btn-gold:hover {
+    background: hsl(var(--charcoal));
+    color: hsl(var(--gold));
+  }
+  .btn-gold-lg {
+    padding: 1.25rem 3.5rem;
+    font-size: 1.0625rem;
+  }
+  .btn-gold-sm {
+    padding: 0.625rem 1.5rem;
+    font-size: 0.8125rem;
   }
 
-  .header-donate-button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 16px 34px hsl(var(--accent) / 0.28);
+  /* Thin gold divider */
+  .gold-divider {
+    display: block;
+    height: 1px;
+    width: 80px;
+    background: hsl(var(--gold));
+  }
+  .gold-divider-sm {
+    width: 60px;
   }
 
-  .donate-bar-button {
-    @apply inline-flex items-center justify-center bg-accent text-accent-foreground font-bold;
-    width: min(100%, 46rem);
-    padding: 1.15rem 1.75rem;
-    font-size: clamp(1.35rem, 2.8vw, 2.35rem);
-    line-height: 1.1;
-    border-radius: 0;
-    box-shadow: 0 18px 40px hsl(var(--accent) / 0.18);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* Octagonal star watermark utility */
+  .islamic-watermark {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'><g fill='none' stroke='%231C1C1C' stroke-width='1'><polygon points='120,20 155,55 220,55 185,90 220,125 155,125 120,160 85,125 20,125 55,90 20,55 85,55'/><polygon points='120,80 140,100 160,80 160,100 180,120 160,140 160,160 140,140 120,160 100,140 80,160 80,140 60,120 80,100 80,80 100,100'/></g></svg>");
+    background-repeat: repeat;
+    background-position: center;
   }
 
-  .donate-bar-button:hover {
-    transform: scale(1.012);
-    box-shadow: 0 22px 46px hsl(var(--accent) / 0.24);
-  }
-
-  .video-shell {
-    border-radius: 0.35rem;
-    overflow: hidden;
-    box-shadow: 0 24px 60px hsl(var(--primary) / 0.14);
-  }
-
+  /* Modal carry-over */
   .modal-overlay {
     @apply fixed inset-0 z-50 flex items-center justify-center p-4;
-    background: hsl(var(--overlay) / 0.68);
+    background: hsla(0, 0%, 11%, 0.72);
   }
-
   .modal-panel {
     background: hsl(var(--card));
     color: hsl(var(--card-foreground));
-    border-radius: 1.5rem;
-    box-shadow: 0 28px 80px hsl(var(--overlay) / 0.28);
+    border-radius: 6px;
+    box-shadow: 0 28px 80px hsla(0, 0%, 11%, 0.32);
   }
-
   .payment-pill {
-    @apply flex items-center justify-center border border-border bg-card text-foreground font-medium;
+    @apply flex items-center justify-center border bg-card text-foreground font-medium;
+    border-color: hsl(var(--border));
     min-height: 3rem;
-    border-radius: 0.8rem;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    border-radius: 4px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
   }
-
-  .payment-pill:hover {
-    border-color: hsl(var(--payment-blue));
-  }
-
+  .payment-pill:hover { border-color: hsl(var(--gold)); }
   .payment-pill.active {
-    border-color: hsl(var(--payment-blue));
-    background: hsl(var(--payment-blue-soft));
-    box-shadow: 0 0 0 2px hsl(var(--payment-blue) / 0.18);
+    border-color: hsl(var(--gold));
+    background: hsl(var(--gold) / 0.1);
+    box-shadow: 0 0 0 2px hsl(var(--gold) / 0.18);
   }
-
   .payment-primary-button {
-    background: hsl(var(--payment-blue));
-    color: hsl(var(--payment-blue-foreground));
-    @apply inline-flex items-center justify-center w-full font-semibold;
-    min-height: 3.55rem;
-    border-radius: 0.8rem;
+    background: hsl(var(--gold));
+    color: hsl(var(--charcoal));
+    @apply inline-flex items-center justify-center w-full font-semibold uppercase;
+    letter-spacing: 0.05em;
+    min-height: 3.4rem;
+    border-radius: 2px;
     transition: filter 0.2s ease, transform 0.2s ease;
   }
-
-  .payment-primary-button:hover {
-    filter: brightness(0.97);
-    transform: translateY(-1px);
-  }
+  .payment-primary-button:hover { filter: brightness(0.95); }
 
   .reminder-panel {
-    background: hsl(var(--panel));
-    color: hsl(var(--panel-foreground));
-    border-radius: 1.5rem;
-    box-shadow: 0 28px 80px hsl(var(--overlay) / 0.35);
+    background: hsl(var(--charcoal));
+    color: hsl(var(--cream));
+    border-radius: 6px;
+    box-shadow: 0 28px 80px hsla(0, 0%, 11%, 0.4);
   }
-
   .floating-prompt {
     background: hsl(var(--card));
     color: hsl(var(--card-foreground));
-    border-radius: 0.95rem;
-    box-shadow: 0 18px 45px hsl(var(--overlay) / 0.18);
+    border-radius: 4px;
+    box-shadow: 0 18px 45px hsla(0, 0%, 11%, 0.18);
     border: 1px solid hsl(var(--border));
   }
-
   .floating-prompt-action {
     background: hsl(var(--card));
     color: hsl(var(--card-foreground));
     transition: background-color 0.2s ease;
   }
-
-  .floating-prompt-action:hover {
-    background: hsl(var(--muted));
-  }
-
+  .floating-prompt-action:hover { background: hsl(var(--muted)); }
   .donor-toast {
     background: hsl(var(--card));
     color: hsl(var(--card-foreground));
-    border-radius: 0.95rem;
-    box-shadow: 0 18px 45px hsl(var(--overlay) / 0.15);
+    border-radius: 4px;
+    box-shadow: 0 18px 45px hsla(0, 0%, 11%, 0.15);
     border: 1px solid hsl(var(--border));
   }
 }
 
-/* PhoneInput styling to match design system */
+/* Bouncing scroll arrow */
+@keyframes soft-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.7; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+.scroll-arrow { animation: soft-bounce 2s ease-in-out infinite; }
+
+/* PhoneInput overrides */
 .donor-phone-input {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  height: 2.5rem;
+  height: 2.75rem;
   padding: 0 0.75rem;
-  border-radius: 0.5rem;
+  border-radius: 4px;
   border: 1px solid hsl(var(--border));
   background: hsl(var(--card));
 }
@@ -266,15 +257,9 @@
   background: transparent;
   border: 0;
   outline: none;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   color: hsl(var(--foreground));
+  font-family: "DM Sans", sans-serif;
 }
-.donor-phone-input .PhoneInputCountry {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-.donor-phone-input .PhoneInputCountrySelect {
-  background: transparent;
-  color: hsl(var(--foreground));
-}
+.donor-phone-input .PhoneInputCountry { display: flex; align-items: center; gap: 0.25rem; }
+.donor-phone-input .PhoneInputCountrySelect { background: transparent; color: hsl(var(--foreground)); }
