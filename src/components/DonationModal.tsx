@@ -257,7 +257,7 @@ const DonationModal = ({ isOpen, onDismiss, initialAmount }: DonationModalProps)
                   onClick={() => setIsMonthly(true)}
                   className={`payment-pill gap-1.5 px-2 text-xs !min-h-[2.25rem] ${isMonthly ? "active" : ""}`}
                 >
-                  <span aria-hidden="true">❤️</span>
+                  <span aria-hidden="true">↻</span>
                   <span>Monthly</span>
                 </button>
               </div>
