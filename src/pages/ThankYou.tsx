@@ -93,23 +93,27 @@ const ThankYou = () => {
   const isRecurring = result?.donation?.is_recurring ?? result?.is_recurring ?? false;
   const paid = result?.paid ?? result?.donation?.status === "completed";
 
-  // Fire TikTok CompletePayment conversion event once when donation is confirmed
+  // Fire TikTok CompletePayment with the real value/currency from the Stripe transaction
   useEffect(() => {
     if (!paid || !sessionId) return;
+    // Pull straight from the verified Stripe session — never hardcode currency or amount
+    const realAmountCents = result?.donation?.amount_cents ?? result?.amount_total ?? null;
+    const realCurrency = result?.donation?.currency ?? result?.currency ?? null;
+    if (!realAmountCents || !realCurrency) return;
     const key = `ttq_cp_${sessionId}`;
     if (sessionStorage.getItem(key)) return;
-    const ttq = (window as any).ttq;
+    const ttq = (window as { ttq?: { track?: (e: string, p?: Record<string, unknown>) => void } }).ttq;
     if (ttq && typeof ttq.track === "function") {
       ttq.track("CompletePayment", {
-        value: amount ? amount / 100 : undefined,
-        currency: (currency || "usd").toUpperCase(),
+        value: realAmountCents / 100,
+        currency: realCurrency.toUpperCase(),
         content_type: "product",
         content_id: isRecurring ? "monthly_donation" : "one_time_donation",
         description: isRecurring ? "Monthly donation" : "One-time donation",
       });
       sessionStorage.setItem(key, "1");
     }
-  }, [paid, sessionId, amount, currency, isRecurring]);
+  }, [paid, sessionId, result, isRecurring]);
 
   return (
     <div className="min-h-screen bg-background">
