@@ -17,9 +17,9 @@ const SHFooter = () => (
 
       <div className="flex md:items-center md:justify-center gap-4">
         {[
-          { Icon: Instagram, href: "https://www.instagram.com/spotlighthumanity", label: "Instagram" },
-          { Icon: Youtube, href: "https://www.youtube.com/@spotlighthumanity", label: "YouTube" },
-          { Icon: Facebook, href: "https://www.facebook.com/spotlighthumanity", label: "Facebook" },
+          { Icon: Instagram, href: "https://www.instagram.com/spotlighthumanity/", label: "Instagram" },
+          { Icon: Youtube, href: "https://www.youtube.com/@SpotlightHumanity", label: "YouTube" },
+          { Icon: Facebook, href: "https://www.facebook.com/SpotlightHumanity/", label: "Facebook" },
         ].map(({ Icon, href, label }) => (
           <a
             key={label}
