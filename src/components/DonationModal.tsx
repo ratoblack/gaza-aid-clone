@@ -12,6 +12,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import heroImage2 from "@/assets/donation-modal-hero.png";
 import logo from "@/assets/logo.png";
+import { DONATION_CURRENCY } from "@/lib/donation-config";
 
 interface DonationModalProps {
   isOpen: boolean;
