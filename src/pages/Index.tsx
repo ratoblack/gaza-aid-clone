@@ -14,7 +14,7 @@ import SHFooter from "@/components/sh/SHFooter";
 import MobileFloatingDonate from "@/components/sh/MobileFloatingDonate";
 
 const Index = () => (
-  <div className="min-h-screen bg-white">
+  <div className="min-h-screen bg-white pt-9">
     <a href="#main" className="skip-link">Skip to main content</a>
     <UrgencyBar />
     <SHHeader />
