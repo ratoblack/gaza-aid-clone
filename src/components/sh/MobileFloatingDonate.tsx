@@ -21,7 +21,7 @@ const MobileFloatingDonate = () => {
       }`}
       style={{ boxShadow: "0 10px 24px rgba(0,0,0,0.25)" }}
     >
-      Donate Now
+      Feed a Family
     </button>
   );
 };

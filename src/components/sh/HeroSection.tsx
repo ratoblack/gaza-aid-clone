@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FadeIn from "./FadeIn";
-import heroImg from "@/assets/hr/how-we-deliver.jpg";
+import heroImg from "@/assets/hr/reality-water.jpg";
 import { useOpenDonate } from "./donate-context";
 
 const TIERS = [
@@ -19,11 +19,11 @@ const HeroSection = () => {
     <section aria-labelledby="hero-title" className="bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-5">
         {/* Image */}
-        <div className="relative lg:col-span-3 min-h-[260px] sm:min-h-[420px] lg:min-h-[640px]">
+        <div className="relative lg:col-span-3 h-[260px] sm:h-[420px] lg:h-auto lg:min-h-[640px]">
           <img
             src={heroImg}
-            alt="Spotlight Humanity field team walking with displaced children in a Gaza camp at golden hour"
-            className="absolute inset-0 h-full w-full object-cover"
+            alt="Spotlight Humanity volunteer pouring clean water into a young boy's empty blue jug in Gaza"
+            className="absolute inset-0 h-full w-full object-cover object-center"
             width={1600}
             height={1200}
           />
@@ -40,18 +40,24 @@ const HeroSection = () => {
             <FadeIn delay={0.05}>
               <h1
                 id="hero-title"
-                className="mt-3 font-serif font-bold text-sh-text text-[28px] sm:text-[32px] lg:text-[36px] leading-[1.2]"
+                className="mt-3 font-serif font-bold text-sh-text text-[28px] sm:text-[32px] lg:text-[34px] leading-[1.2]"
               >
-                Families Are Starving.<br />You Can Help Today.
+                They haven't eaten today.<br />You can change that right now.
               </h1>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <p className="mt-4 font-sans text-[15px] sm:text-[16px] text-sh-text-secondary leading-[1.6]">
-                Hot meals, food parcels, and clean water — delivered directly to displaced families in Gaza by our teams on the ground.
+              <p className="mt-3 font-sans text-[15px] text-sh-text-secondary leading-[1.6]">
+                Every dollar you give is converted into food and delivered by our team — already on the ground.
               </p>
             </FadeIn>
 
-            <div className="my-6 h-px bg-sh-border" />
+            <div className="my-5 h-px bg-sh-border" />
+
+            <FadeIn delay={0.12}>
+              <p className="mb-4 text-center font-sans italic text-[13px] text-sh-text-muted">
+                A single meal costs less than your morning coffee.
+              </p>
+            </FadeIn>
 
             <FadeIn delay={0.15}>
               <div className="grid grid-cols-2 gap-2.5">
@@ -105,12 +111,16 @@ const HeroSection = () => {
                       disabled ? "bg-sh-green/50 cursor-not-allowed" : "bg-sh-green hover:bg-sh-green-dark"
                     }`}
                   >
-                    {num > 0 ? `Donate $${amount} Now` : "Donate Now"} <span className="ml-2">→</span>
+                    Feed a Family Today <span className="ml-2">→</span>
                   </button>
                 );
               })()}
 
-              <p className="mt-4 text-center font-sans text-[12px] text-sh-text-muted leading-relaxed">
+              <p className="mt-3 mb-2 text-center font-sans text-[12px] font-semibold text-sh-green">
+                ⏱ Next food distribution: tomorrow morning
+              </p>
+
+              <p className="mt-2 text-center font-sans text-[12px] text-sh-text-muted leading-relaxed">
                 🔒 Secure donation · 501(c)(3) nonprofit · EIN: 33-1754908<br />
                 Zakat-eligible · Tax-deductible
               </p>

@@ -45,9 +45,9 @@ const RealitySection = () => {
             <button
               type="button"
               onClick={() => openDonate()}
-              className="mt-8 inline-flex items-center rounded border-2 border-sh-green bg-transparent px-7 py-3 font-sans text-[14px] font-semibold text-sh-green transition-colors hover:bg-sh-green hover:text-white"
+              className="mt-8 inline-flex items-center rounded bg-sh-green px-7 py-3.5 font-sans text-[14px] font-semibold text-white transition-colors hover:bg-sh-green-dark"
             >
-              See How We Operate <span className="ml-2">→</span>
+              Feed a Family Now <span className="ml-2">→</span>
             </button>
           </FadeIn>
         </div>
