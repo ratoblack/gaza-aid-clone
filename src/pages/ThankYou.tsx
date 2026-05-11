@@ -93,6 +93,24 @@ const ThankYou = () => {
   const isRecurring = result?.donation?.is_recurring ?? result?.is_recurring ?? false;
   const paid = result?.paid ?? result?.donation?.status === "completed";
 
+  // Fire TikTok CompletePayment conversion event once when donation is confirmed
+  useEffect(() => {
+    if (!paid || !sessionId) return;
+    const key = `ttq_cp_${sessionId}`;
+    if (sessionStorage.getItem(key)) return;
+    const ttq = (window as any).ttq;
+    if (ttq && typeof ttq.track === "function") {
+      ttq.track("CompletePayment", {
+        value: amount ? amount / 100 : undefined,
+        currency: (currency || "usd").toUpperCase(),
+        content_type: "product",
+        content_id: isRecurring ? "monthly_donation" : "one_time_donation",
+        description: isRecurring ? "Monthly donation" : "One-time donation",
+      });
+      sessionStorage.setItem(key, "1");
+    }
+  }, [paid, sessionId, amount, currency, isRecurring]);
+
   return (
     <div className="min-h-screen bg-background">
       <Header onDonateClick={() => setOpen(true)} />
