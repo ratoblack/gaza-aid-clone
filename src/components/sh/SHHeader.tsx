@@ -15,7 +15,7 @@ const SHHeader = () => {
             <img
               src={logoGreen}
               alt="Spotlight Humanity"
-              className="h-7 sm:h-9 w-auto"
+              className="h-9 sm:h-12 w-auto"
               width={500}
               height={201}
             />
