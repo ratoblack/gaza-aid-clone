@@ -47,7 +47,7 @@ const HeroSection = () => {
             </FadeIn>
             <FadeIn delay={0.1}>
               <p className="mt-3 font-sans text-[15px] text-sh-text-secondary leading-[1.6]">
-                Every dollar you give is converted into food and delivered by our team — already on the ground.
+                Every dollar you give is converted into food and delivered by our team — already on the&nbsp;ground.
               </p>
             </FadeIn>
 
