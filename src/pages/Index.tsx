@@ -33,9 +33,9 @@ const Index = () => {
         <SHHeader />
         <main id="main">
           <HeroSection />
-          <VideoProofSection />
           <CredibilityStrip />
           <RealitySection />
+          <VideoProofSection />
           <ImpactCardsSection />
           <ProjectsSection />
           <GallerySection />
