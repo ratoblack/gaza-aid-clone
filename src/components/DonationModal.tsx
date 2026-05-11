@@ -237,13 +237,6 @@ const DonationModal = ({ isOpen, onDismiss, initialAmount }: DonationModalProps)
             </div>
 
             <div className="px-4 pb-3 pt-1">
-              <div className="mb-2 flex items-center gap-1.5">
-                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-secondary text-primary">
-                  <Shield className="h-3 w-3" />
-                </div>
-                <span className="text-xs font-semibold text-foreground">Secure donation</span>
-              </div>
-
               <div className="mb-2 grid grid-cols-2 gap-1.5">
                 <button
                   type="button"
