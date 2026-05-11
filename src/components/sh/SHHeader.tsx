@@ -9,8 +9,8 @@ const SHHeader = () => {
       className="sticky top-9 z-30 w-full bg-white border-b border-sh-border"
       style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}
     >
-      <div className="mx-auto flex max-w-[1200px] items-center justify-between px-5 py-3 sm:px-8">
-        <div className="flex items-center gap-3">
+      <div className="mx-auto flex max-w-[1200px] items-center justify-between px-5 py-2.5 sm:px-8 sm:py-3 min-h-[60px] sm:min-h-[76px]">
+        <div className="flex items-center gap-3 min-w-0 flex-shrink">
           <a href="#main" aria-label="Spotlight Humanity — home" className="flex items-center">
             <img
               src={logoGreen}
