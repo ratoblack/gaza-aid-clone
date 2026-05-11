@@ -14,7 +14,7 @@ const HowMoneyArrivesSection = () => {
         <FadeIn delay={0.1}>
           <p className="mt-3 font-sans text-[15px] text-sh-text-secondary leading-[1.6]">
             Our teams are physically present in Gaza — not operating remotely.<br />
-            Your donation is converted into food and delivered directly by our staff.
+            Your donation is converted into food and delivered directly by our&nbsp;staff.
           </p>
         </FadeIn>
         <FadeIn delay={0.15}>

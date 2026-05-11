@@ -47,7 +47,7 @@ const HeroSection = () => {
             </FadeIn>
             <FadeIn delay={0.1}>
               <p className="mt-3 font-sans text-[15px] text-sh-text-secondary leading-[1.6]">
-                Every dollar you give is converted into food and delivered by our team — already on the ground.
+                Every dollar you give is converted into food and delivered by our team — already on the&nbsp;ground.
               </p>
             </FadeIn>
 
@@ -121,8 +121,8 @@ const HeroSection = () => {
               </p>
 
               <p className="mt-2 text-center font-sans text-[12px] text-sh-text-muted leading-relaxed">
-                🔒 Secure donation · 501(c)(3) nonprofit · EIN: 33-1754908<br />
-                Zakat-eligible · Tax-deductible
+                🔒 Secure donation · 501(c)(3) nonprofit · EIN:&nbsp;33-1754908<br />
+                Zakat-eligible ·&nbsp;Tax-deductible
               </p>
             </FadeIn>
           </div>

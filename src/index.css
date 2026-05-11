@@ -111,6 +111,14 @@
     font-family: "Cormorant Garamond", "Times New Roman", serif;
   }
 
+  /* Avoid orphan/widow words for cleaner typography */
+  p, li, blockquote, figcaption {
+    text-wrap: pretty;
+  }
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+
   :where(a, button, input, select, textarea, [tabindex]):focus-visible {
     outline: 2px solid hsl(var(--gold));
     outline-offset: 3px;

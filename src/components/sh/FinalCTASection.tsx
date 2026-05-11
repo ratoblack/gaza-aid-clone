@@ -54,7 +54,7 @@ const FinalCTASection = () => {
 
         <FadeIn delay={0.2}>
           <p className="mt-5 font-sans text-[12px] sm:text-[13px]" style={{ color: "rgba(255,255,255,0.5)" }}>
-            🔒 Secure · 501(c)(3) · EIN 33-1754908 · Zakat-eligible · Tax-deductible
+            🔒 Secure · 501(c)(3) · EIN&nbsp;33-1754908 · Zakat-eligible ·&nbsp;Tax-deductible
           </p>
         </FadeIn>
       </div>
