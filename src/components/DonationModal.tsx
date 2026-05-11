@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { Shield, X, ArrowLeft, Loader2 } from "lucide-react";
 import { loadStripe } from "@stripe/stripe-js";
 import {
@@ -51,14 +51,28 @@ const DonationModal = ({ isOpen, onDismiss, initialAmount }: DonationModalProps)
   const [phone, setPhone] = useState<string | undefined>(undefined);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  // Unique ID per modal opening — used to dedupe TikTok events in sessionStorage
+  const openIdRef = useRef<string | null>(null);
+
   const handleClose = () => {
     setStep("amount");
     setStripePromise(null);
     setClientSecret(null);
+    openIdRef.current = null;
     onDismiss();
   };
 
   const trackTikTok = (event: string, extra: Record<string, unknown> = {}) => {
+    if (typeof window === "undefined") return;
+    const openId = openIdRef.current;
+    if (!openId) return;
+    const key = `ttq_${event}_${openId}`;
+    try {
+      if (sessionStorage.getItem(key)) return;
+      sessionStorage.setItem(key, "1");
+    } catch {
+      // sessionStorage unavailable (private mode) — fall through and still fire once per render path
+    }
     const ttq = (window as { ttq?: { track?: (e: string, p?: Record<string, unknown>) => void } }).ttq;
     if (ttq && typeof ttq.track === "function") {
       ttq.track(event, {
@@ -73,7 +87,17 @@ const DonationModal = ({ isOpen, onDismiss, initialAmount }: DonationModalProps)
   };
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) {
+      openIdRef.current = null;
+      return;
+    }
+    // Assign a fresh open ID so each modal opening gets its own dedup namespace
+    if (!openIdRef.current) {
+      openIdRef.current =
+        (typeof crypto !== "undefined" && "randomUUID" in crypto
+          ? crypto.randomUUID()
+          : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
+    }
     if (initialAmount && initialAmount > 0) setSelectedAmount(initialAmount);
     // Fire ViewContent once per modal open
     trackTikTok("ViewContent");
