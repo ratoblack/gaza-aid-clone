@@ -202,19 +202,19 @@
     border-radius: 4px;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
   }
-  .payment-pill:hover { border-color: hsl(var(--gold)); }
+  .payment-pill:hover { border-color: hsl(var(--sh-green)); }
   .payment-pill.active {
-    border-color: hsl(var(--gold));
-    background: hsl(var(--gold) / 0.1);
-    box-shadow: 0 0 0 2px hsl(var(--gold) / 0.18);
+    border-color: hsl(var(--sh-green));
+    background: hsl(var(--sh-green) / 0.08);
+    box-shadow: 0 0 0 2px hsl(var(--sh-green) / 0.18);
   }
   .payment-primary-button {
-    background: hsl(var(--gold));
-    color: hsl(var(--charcoal));
+    background: hsl(var(--sh-green));
+    color: #ffffff;
     @apply inline-flex items-center justify-center w-full font-semibold uppercase;
     letter-spacing: 0.05em;
     min-height: 3.4rem;
-    border-radius: 2px;
+    border-radius: 4px;
     transition: filter 0.2s ease, transform 0.2s ease;
   }
   .payment-primary-button:hover { filter: brightness(0.95); }
