@@ -44,7 +44,7 @@ const Index = () => {
           <FinalCTASection />
         </main>
         <SHFooter />
-        <MobileFloatingDonate />
+        
         <DonationModal
           isOpen={open}
           onDismiss={() => setOpen(false)}
