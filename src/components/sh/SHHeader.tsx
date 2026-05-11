@@ -1,4 +1,5 @@
 import { useOpenDonate } from "./donate-context";
+import logoGreen from "@/assets/spotlight/logo-green.png";
 
 const SHHeader = () => {
   const openDonate = useOpenDonate();
@@ -10,8 +11,14 @@ const SHHeader = () => {
     >
       <div className="mx-auto flex max-w-[1200px] items-center justify-between px-5 py-3 sm:px-8">
         <div className="flex items-center gap-3">
-          <a href="#main" className="font-serif font-bold text-sh-green text-[18px] sm:text-[20px] leading-none">
-            Spotlight Humanity
+          <a href="#main" aria-label="Spotlight Humanity — home" className="flex items-center">
+            <img
+              src={logoGreen}
+              alt="Spotlight Humanity"
+              className="h-7 sm:h-9 w-auto"
+              width={500}
+              height={201}
+            />
           </a>
           <span className="hidden sm:inline-flex items-center font-sans text-[11px] font-medium text-sh-green bg-sh-green-light rounded px-2 py-[3px]">
             501(c)(3) Verified
