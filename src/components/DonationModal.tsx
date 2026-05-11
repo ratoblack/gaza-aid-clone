@@ -12,6 +12,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import heroImage2 from "@/assets/donation-modal-hero.png";
 import logo from "@/assets/logo.png";
+import { DONATION_CURRENCY } from "@/lib/donation-config";
 
 interface DonationModalProps {
   isOpen: boolean;
@@ -77,7 +78,7 @@ const DonationModal = ({ isOpen, onDismiss, initialAmount }: DonationModalProps)
     if (ttq && typeof ttq.track === "function") {
       ttq.track(event, {
         value: selectedAmount,
-        currency: "USD",
+        currency: DONATION_CURRENCY,
         content_type: "product",
         content_id: isMonthly ? "monthly_donation" : "one_time_donation",
         description: isMonthly ? "Monthly donation" : "One-time donation",
