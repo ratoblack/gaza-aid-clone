@@ -20,7 +20,7 @@ const GallerySection = () => (
     <div className="mx-auto max-w-[1100px]">
       <FadeIn>
         <h2 className="text-center font-serif font-bold text-[24px] sm:text-[28px] text-sh-text leading-tight">
-          Proof of Work
+          In the Field
         </h2>
       </FadeIn>
       <FadeIn delay={0.1}>
