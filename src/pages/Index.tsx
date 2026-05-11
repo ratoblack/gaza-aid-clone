@@ -12,7 +12,7 @@ import TransparencySection from "@/components/sh/TransparencySection";
 import HowMoneyArrivesSection from "@/components/sh/HowMoneyArrivesSection";
 import FinalCTASection from "@/components/sh/FinalCTASection";
 import SHFooter from "@/components/sh/SHFooter";
-import MobileFloatingDonate from "@/components/sh/MobileFloatingDonate";
+
 import DonationModal from "@/components/DonationModal";
 import { DonateContext } from "@/components/sh/donate-context";
 
