@@ -121,8 +121,8 @@ const HeroSection = () => {
               </p>
 
               <p className="mt-2 text-center font-sans text-[12px] text-sh-text-muted leading-relaxed">
-                🔒 Secure donation · 501(c)(3) nonprofit · EIN: 33-1754908<br />
-                Zakat-eligible · Tax-deductible
+                🔒 Secure donation · 501(c)(3) nonprofit · EIN:&nbsp;33-1754908<br />
+                Zakat-eligible ·&nbsp;Tax-deductible
               </p>
             </FadeIn>
           </div>
