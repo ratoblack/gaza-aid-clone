@@ -14,6 +14,7 @@ import FinalCTASection from "@/components/sh/FinalCTASection";
 import SHFooter from "@/components/sh/SHFooter";
 
 import DonationModal from "@/components/DonationModal";
+import RecentDonationToast from "@/components/RecentDonationToast";
 import { DonateContext } from "@/components/sh/donate-context";
 
 const Index = () => {
@@ -44,7 +45,7 @@ const Index = () => {
           <FinalCTASection />
         </main>
         <SHFooter />
-        
+        <RecentDonationToast />
         <DonationModal
           isOpen={open}
           onDismiss={() => setOpen(false)}
