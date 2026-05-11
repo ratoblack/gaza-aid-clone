@@ -1,0 +1,60 @@
+import { Instagram, Youtube, Facebook } from "lucide-react";
+
+const SHFooter = () => (
+  <footer className="bg-sh-text text-white px-5 py-14">
+    <div className="mx-auto grid max-w-[1100px] grid-cols-1 gap-10 md:grid-cols-3">
+      <div>
+        <p className="font-serif italic font-bold text-[22px] text-white">Spotlight Humanity</p>
+        <p className="mt-2 font-sans text-[14px]" style={{ color: "rgba(255,255,255,0.5)" }}>
+          "Together we can make a huge impact."
+        </p>
+        <address className="not-italic mt-4 font-sans text-[13px]" style={{ color: "rgba(255,255,255,0.4)" }}>
+          1905 S Haggerty Rd Ste 6<br />
+          Canton, MI 48188
+        </address>
+      </div>
+
+      <div className="flex md:items-center md:justify-center gap-4">
+        {[
+          { Icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+          { Icon: Youtube, href: "https://youtube.com", label: "YouTube" },
+          { Icon: Facebook, href: "https://facebook.com", label: "Facebook" },
+        ].map(({ Icon, href, label }) => (
+          <a
+            key={label}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={label}
+            className="transition-colors hover:text-white"
+            style={{ color: "rgba(255,255,255,0.4)" }}
+          >
+            <Icon className="h-6 w-6" strokeWidth={1.6} />
+          </a>
+        ))}
+      </div>
+
+      <div className="font-sans text-[13px] md:text-right" style={{ color: "rgba(255,255,255,0.55)" }}>
+        Spotlight Humanity is a 501(c)(3) nonprofit.<br />
+        EIN: 33-1754908<br />
+        Donations are tax-deductible.
+        <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 md:justify-end" style={{ color: "rgba(255,255,255,0.4)" }}>
+          <a href="/privacy" className="hover:text-white">Privacy Policy</a>
+          <span>·</span>
+          <a href="/terms" className="hover:text-white">Terms of Use</a>
+          <span>·</span>
+          <a href="/refund" className="hover:text-white">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+
+    <div
+      className="mx-auto mt-10 max-w-[1100px] border-t pt-6 text-center font-sans text-[12px]"
+      style={{ borderColor: "rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.25)" }}
+    >
+      © {new Date().getFullYear()} Spotlight Humanity. All rights reserved.
+    </div>
+  </footer>
+);
+
+export default SHFooter;
