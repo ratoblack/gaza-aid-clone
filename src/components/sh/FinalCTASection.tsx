@@ -43,12 +43,12 @@ const FinalCTASection = () => {
 
         <FadeIn delay={0.15}>
           <a
-            href={DONATE_URL}
+            href={`${DONATE_URL}?amount=${selected}`}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-8 inline-flex items-center rounded bg-white px-12 py-4 font-sans font-bold text-[17px] sm:text-[18px] text-sh-green transition-colors hover:bg-white/90"
           >
-            Donate Now <span className="ml-2">→</span>
+            Donate ${selected} Now <span className="ml-2">→</span>
           </a>
         </FadeIn>
 
