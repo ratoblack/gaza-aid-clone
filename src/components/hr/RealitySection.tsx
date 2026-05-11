@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
-import emptyBowl from "@/assets/hr/empty-bowl.jpg";
+import emptyBowl from "@/assets/hr/reality-water.jpg";
 
 const RealitySection = () => {
   const reduce = useReducedMotion();
@@ -15,7 +15,7 @@ const RealitySection = () => {
         >
           <img
             src={emptyBowl}
-            alt="Hands holding an empty clay bowl"
+            alt="Volunteer providing clean water to a young boy filling a blue jug"
             loading="lazy"
             width={1200}
             height={1400}
