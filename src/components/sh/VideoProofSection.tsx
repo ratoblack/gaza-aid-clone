@@ -39,8 +39,8 @@ const VideoProofSection = () => {
                 className="group absolute inset-0 h-full w-full"
               >
                 <img
-                  src={`https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg`}
-                  alt="Spotlight Humanity field work — click to play video"
+                  src={videoPoster}
+                  alt="Spotlight Humanity field team distributing food parcels to children in Gaza at golden hour"
                   loading="lazy"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
