@@ -1,8 +1,7 @@
 import { useState } from "react";
 import FadeIn from "./FadeIn";
 import heroImg from "@/assets/hr/how-we-deliver.jpg";
-
-const DONATE_URL = "https://www.spotlight-humanity.org/";
+import { useOpenDonate } from "./donate-context";
 
 const TIERS = [
   { value: "25", label: "$25", desc: "Hot meals for a family for 2 days" },
@@ -12,6 +11,7 @@ const TIERS = [
 ];
 
 const HeroSection = () => {
+  const openDonate = useOpenDonate();
   const [selected, setSelected] = useState("50");
   const [other, setOther] = useState("");
 
@@ -93,23 +93,20 @@ const HeroSection = () => {
 
               {(() => {
                 const amount = selected === "other" ? other.trim() : selected;
-                const href = amount && Number(amount) > 0
-                  ? `${DONATE_URL}?amount=${encodeURIComponent(amount)}`
-                  : DONATE_URL;
-                const disabled = selected === "other" && !(Number(other) > 0);
+                const num = Number(amount);
+                const disabled = selected === "other" && !(num > 0);
                 return (
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    type="button"
+                    onClick={() => !disabled && openDonate(num > 0 ? num : undefined)}
                     aria-disabled={disabled}
-                    onClick={(e) => disabled && e.preventDefault()}
+                    disabled={disabled}
                     className={`mt-4 inline-flex w-full items-center justify-center rounded-md px-6 py-4 font-sans text-[16px] font-semibold text-white transition-colors ${
                       disabled ? "bg-sh-green/50 cursor-not-allowed" : "bg-sh-green hover:bg-sh-green-dark"
                     }`}
                   >
-                    {amount && Number(amount) > 0 ? `Donate $${amount} Now` : "Donate Now"} <span className="ml-2">→</span>
-                  </a>
+                    {num > 0 ? `Donate $${amount} Now` : "Donate Now"} <span className="ml-2">→</span>
+                  </button>
                 );
               })()}
 

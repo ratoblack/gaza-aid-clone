@@ -1,10 +1,11 @@
 import { useState } from "react";
 import FadeIn from "./FadeIn";
+import { useOpenDonate } from "./donate-context";
 
-const DONATE_URL = "https://www.spotlight-humanity.org/";
 const TIERS = ["25", "50", "100", "250"];
 
 const FinalCTASection = () => {
+  const openDonate = useOpenDonate();
   const [selected, setSelected] = useState("50");
   return (
     <section className="bg-sh-green-dark px-5 py-20 sm:py-24 text-center text-white">
@@ -42,14 +43,13 @@ const FinalCTASection = () => {
         </FadeIn>
 
         <FadeIn delay={0.15}>
-          <a
-            href={`${DONATE_URL}?amount=${selected}`}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            onClick={() => openDonate(Number(selected))}
             className="mt-8 inline-flex items-center rounded bg-white px-12 py-4 font-sans font-bold text-[17px] sm:text-[18px] text-sh-green transition-colors hover:bg-white/90"
           >
             Donate ${selected} Now <span className="ml-2">→</span>
-          </a>
+          </button>
         </FadeIn>
 
         <FadeIn delay={0.2}>

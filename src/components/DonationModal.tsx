@@ -17,6 +17,7 @@ interface DonationModalProps {
   isOpen: boolean;
   onDismiss: () => void;
   onDonate: (amount: number, isMonthly: boolean) => void;
+  initialAmount?: number;
 }
 
 const presetAmounts = [5, 10, 20, 45, 80];
@@ -33,8 +34,8 @@ const donorSchema = z.object({
     .refine((v) => !v || isValidPhoneNumber(v), { message: "Invalid phone number" }),
 });
 
-const DonationModal = ({ isOpen, onDismiss }: DonationModalProps) => {
-  const [selectedAmount, setSelectedAmount] = useState(20);
+const DonationModal = ({ isOpen, onDismiss, initialAmount }: DonationModalProps) => {
+  const [selectedAmount, setSelectedAmount] = useState(initialAmount ?? 20);
   const [isMonthly, setIsMonthly] = useState(false);
   const [showComment, setShowComment] = useState(false);
   const [comment, setComment] = useState("");
@@ -59,6 +60,7 @@ const DonationModal = ({ isOpen, onDismiss }: DonationModalProps) => {
 
   useEffect(() => {
     if (!isOpen) return;
+    if (initialAmount && initialAmount > 0) setSelectedAmount(initialAmount);
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") handleClose();
     };
@@ -70,7 +72,7 @@ const DonationModal = ({ isOpen, onDismiss }: DonationModalProps) => {
       document.body.style.overflow = prevOverflow;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  }, [isOpen, initialAmount]);
 
   const goToDonor = () => setStep("donor");
 
