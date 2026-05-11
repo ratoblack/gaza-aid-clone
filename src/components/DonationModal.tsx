@@ -58,9 +58,25 @@ const DonationModal = ({ isOpen, onDismiss, initialAmount }: DonationModalProps)
     onDismiss();
   };
 
+  const trackTikTok = (event: string, extra: Record<string, unknown> = {}) => {
+    const ttq = (window as { ttq?: { track?: (e: string, p?: Record<string, unknown>) => void } }).ttq;
+    if (ttq && typeof ttq.track === "function") {
+      ttq.track(event, {
+        value: selectedAmount,
+        currency: "USD",
+        content_type: "product",
+        content_id: isMonthly ? "monthly_donation" : "one_time_donation",
+        description: isMonthly ? "Monthly donation" : "One-time donation",
+        ...extra,
+      });
+    }
+  };
+
   useEffect(() => {
     if (!isOpen) return;
     if (initialAmount && initialAmount > 0) setSelectedAmount(initialAmount);
+    // Fire ViewContent once per modal open
+    trackTikTok("ViewContent");
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") handleClose();
     };
@@ -74,7 +90,10 @@ const DonationModal = ({ isOpen, onDismiss, initialAmount }: DonationModalProps)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, initialAmount]);
 
-  const goToDonor = () => setStep("donor");
+  const goToDonor = () => {
+    trackTikTok("InitiateCheckout");
+    setStep("donor");
+  };
 
   const submitDonor = async () => {
     const parsed = donorSchema.safeParse({ firstName, lastName, email, phone });
@@ -107,6 +126,8 @@ const DonationModal = ({ isOpen, onDismiss, initialAmount }: DonationModalProps)
       if (error) throw error;
       if (data?.publishableKey) setStripePromise(loadStripe(data.publishableKey));
       setClientSecret(data?.clientSecret || null);
+      // Donor info captured + checkout session created → Lead
+      trackTikTok("Lead", { email: parsed.data.email });
       setStep("checkout");
     } catch (err) {
       console.error("Checkout error:", err);
