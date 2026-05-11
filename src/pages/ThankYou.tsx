@@ -1,7 +1,7 @@
 import { Link, useSearchParams } from "react-router-dom";
 import { CheckCircle2, AlertCircle, Loader2, Clock } from "lucide-react";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import SHFooter from "@/components/sh/SHFooter";
 import { useEffect, useState } from "react";
 import DonationModal from "@/components/DonationModal";
 import { supabase } from "@/integrations/supabase/client";
@@ -150,12 +150,12 @@ const ThankYou = () => {
 
         <Link
           to="/"
-          className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg transition hover:brightness-110"
+          className="mt-8 inline-flex items-center gap-2 rounded-md bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-md transition hover:brightness-110"
         >
           Back to home
         </Link>
       </main>
-      <Footer onDonateClick={() => setOpen(true)} />
+      <SHFooter />
       <DonationModal isOpen={open} onDismiss={() => setOpen(false)} onDonate={() => setOpen(false)} />
     </div>
   );

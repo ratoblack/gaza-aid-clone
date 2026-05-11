@@ -48,7 +48,7 @@ const Index = () => {
         <DonationModal
           isOpen={open}
           onDismiss={() => setOpen(false)}
-          onDonate={() => {}}
+          onDonate={() => setOpen(false)}
           initialAmount={amount}
         />
       </div>
