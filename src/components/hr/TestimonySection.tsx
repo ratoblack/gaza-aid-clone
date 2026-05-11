@@ -1,11 +1,30 @@
 import Reveal from "./Reveal";
+import testimonyImg from "@/assets/hr/testimony.jpg";
 
 const TestimonySection = () => (
-  <section className="bg-olive py-20 sm:py-28 px-6 text-white">
-    <div className="relative mx-auto max-w-[720px] text-center">
+  <section className="relative overflow-hidden text-white">
+    {/* Full-bleed emotional photo */}
+    <img
+      src={testimonyImg}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      className="absolute inset-0 h-full w-full object-cover"
+      style={{ objectPosition: "center 30%" }}
+    />
+    <div
+      aria-hidden="true"
+      className="absolute inset-0"
+      style={{
+        background:
+          "linear-gradient(180deg, hsla(84,13%,18%,0.78) 0%, hsla(84,13%,22%,0.85) 60%, hsla(84,13%,18%,0.92) 100%)",
+      }}
+    />
+
+    <div className="relative mx-auto max-w-[760px] px-6 py-24 sm:py-32 text-center">
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 font-display text-gold-light/30 text-[120px] leading-none"
+        className="pointer-events-none absolute -top-2 left-1/2 -translate-x-1/2 font-display text-gold-light/30 text-[120px] leading-none"
       >
         &ldquo;
       </span>
@@ -16,7 +35,7 @@ const TestimonySection = () => (
       </Reveal>
       <Reveal delay={0.15}>
         <cite
-          className="mt-5 block text-[14px] not-italic text-white/55"
+          className="mt-5 block text-[14px] not-italic text-white/65"
           style={{ letterSpacing: "0.05em" }}
         >
           — Ahmad, father of three, displaced from Northern Gaza
