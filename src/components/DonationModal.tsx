@@ -313,6 +313,36 @@ const DonationModal = ({ isOpen, onDismiss }: DonationModalProps) => {
               >
                 Continue
               </button>
+
+              <div className="mt-3 space-y-1.5">
+                <details className="group rounded-lg border border-border bg-card/50 px-2.5 py-2">
+                  <summary className="cursor-pointer list-none text-[0.7rem] font-medium text-foreground/80 hover:text-foreground">
+                    Is my donation secure?
+                  </summary>
+                  <div className="mt-1.5 space-y-1.5 text-[0.65rem] leading-[1.5] text-foreground/70">
+                    <p>Yes, we use industry-standard SSL technology to keep your information secure.</p>
+                    <p>We partner with Stripe, the industry's established payment processor trusted by some of the world's largest companies.</p>
+                    <p>Your sensitive financial information never touches our servers. We send all data directly to Stripe's PCI-compliant servers through SSL.</p>
+                  </div>
+                </details>
+                <details className="group rounded-lg border border-border bg-card/50 px-2.5 py-2">
+                  <summary className="cursor-pointer list-none text-[0.7rem] font-medium text-foreground/80 hover:text-foreground">
+                    Is this donation tax-deductible?
+                  </summary>
+                  <div className="mt-1.5 space-y-1.5 text-[0.65rem] leading-[1.5] text-foreground/70">
+                    <p>We are an organization eligible to receive tax deductible contributions. Your gift may be tax-deductible to the extent allowed by law. Please consult your tax advisor for guidance applicable to your specific situation.</p>
+                    <p>We will email you a donation receipt. Please retain it for your records, as it may be required to substantiate your charitable contribution for tax purposes, subject to applicable law.</p>
+                  </div>
+                </details>
+                <details className="group rounded-lg border border-border bg-card/50 px-2.5 py-2">
+                  <summary className="cursor-pointer list-none text-[0.7rem] font-medium text-foreground/80 hover:text-foreground">
+                    Can I cancel my recurring donation?
+                  </summary>
+                  <div className="mt-1.5 text-[0.65rem] leading-[1.5] text-foreground/70">
+                    <p>Of course. You always remain in full control of your recurring donation, and you're free to change or cancel it at any time.</p>
+                  </div>
+                </details>
+              </div>
             </div>
           </>
         )}
