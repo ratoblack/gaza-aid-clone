@@ -1,5 +1,6 @@
 import { useState } from "react";
 import FadeIn from "./FadeIn";
+import videoPoster from "@/assets/hr/food-parcels.jpg";
 
 const VIDEO_ID = "Sr2nbl0d9aU";
 
