@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FadeIn from "./FadeIn";
-import heroImg from "@/assets/spotlight/hero.jpg";
+import heroImg from "@/assets/spotlight/gallery2.jpg";
 import { useOpenDonate } from "./donate-context";
 
 const TIERS = [
