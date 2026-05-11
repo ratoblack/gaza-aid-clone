@@ -126,6 +126,8 @@ const DonationModal = ({ isOpen, onDismiss, initialAmount }: DonationModalProps)
       if (error) throw error;
       if (data?.publishableKey) setStripePromise(loadStripe(data.publishableKey));
       setClientSecret(data?.clientSecret || null);
+      // Donor info captured + checkout session created → Lead
+      trackTikTok("Lead", { email: parsed.data.email });
       setStep("checkout");
     } catch (err) {
       console.error("Checkout error:", err);
