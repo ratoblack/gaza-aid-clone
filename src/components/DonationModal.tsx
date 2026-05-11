@@ -206,14 +206,14 @@ const DonationModal = ({ isOpen, onDismiss, initialAmount }: DonationModalProps)
         <div className="relative w-full overflow-hidden">
           <img
             src={heroImage2}
-            alt="Let's build a better tomorrow — Human Releaf"
+            alt="Let's build a better tomorrow — Spotlight Humanity"
             className="h-auto w-full object-contain"
           />
         </div>
 
         <div className="flex items-center gap-2 px-4 pt-3">
           <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded bg-primary overflow-hidden">
-            <img src={logo} alt="Human Releaf" className="h-full w-full object-contain" />
+            <img src={logo} alt="Spotlight Humanity" className="h-full w-full object-contain" />
           </div>
           <h3 id="donation-title" className="text-sm font-bold leading-tight text-foreground">
             Gaza Emergency Appeal
@@ -257,7 +257,7 @@ const DonationModal = ({ isOpen, onDismiss, initialAmount }: DonationModalProps)
                   onClick={() => setIsMonthly(true)}
                   className={`payment-pill gap-1.5 px-2 text-xs !min-h-[2.25rem] ${isMonthly ? "active" : ""}`}
                 >
-                  <span aria-hidden="true">❤️</span>
+                  <span aria-hidden="true">↻</span>
                   <span>Monthly</span>
                 </button>
               </div>

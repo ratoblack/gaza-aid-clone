@@ -1,4 +1,5 @@
 import { Instagram, Youtube, Facebook } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const SHFooter = () => (
   <footer className="bg-sh-text text-white px-5 py-14">
@@ -16,9 +17,9 @@ const SHFooter = () => (
 
       <div className="flex md:items-center md:justify-center gap-4">
         {[
-          { Icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-          { Icon: Youtube, href: "https://youtube.com", label: "YouTube" },
-          { Icon: Facebook, href: "https://facebook.com", label: "Facebook" },
+          { Icon: Instagram, href: "https://www.instagram.com/spotlighthumanity", label: "Instagram" },
+          { Icon: Youtube, href: "https://www.youtube.com/@spotlighthumanity", label: "YouTube" },
+          { Icon: Facebook, href: "https://www.facebook.com/spotlighthumanity", label: "Facebook" },
         ].map(({ Icon, href, label }) => (
           <a
             key={label}
@@ -39,11 +40,11 @@ const SHFooter = () => (
         EIN: 33-1754908<br />
         Donations are tax-deductible.
         <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 md:justify-end" style={{ color: "rgba(255,255,255,0.4)" }}>
-          <a href="/privacy" className="hover:text-white">Privacy Policy</a>
+          <Link to="/privacy" className="hover:text-white">Privacy Policy</Link>
           <span>·</span>
-          <a href="/terms" className="hover:text-white">Terms of Use</a>
+          <Link to="/terms" className="hover:text-white">Terms of Use</Link>
           <span>·</span>
-          <a href="/refund" className="hover:text-white">Refund Policy</a>
+          <Link to="/refund" className="hover:text-white">Refund Policy</Link>
         </div>
       </div>
     </div>

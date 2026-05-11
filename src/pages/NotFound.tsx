@@ -1,7 +1,7 @@
 import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import SHFooter from "@/components/sh/SHFooter";
 import { useState } from "react";
 import DonationModal from "@/components/DonationModal";
 
@@ -23,19 +23,19 @@ const NotFound = () => {
           The page you’re looking for doesn’t exist. While you’re here, families in Gaza still need our help.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Link to="/" className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition hover:border-primary">
+          <Link to="/" className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition hover:border-primary">
             Back to home
           </Link>
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg transition hover:brightness-110"
+            className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-md transition hover:brightness-110"
           >
-            Feed a Life
+            Donate Now
           </button>
         </div>
       </main>
-      <Footer onDonateClick={() => setOpen(true)} />
+      <SHFooter />
       <DonationModal isOpen={open} onDismiss={() => setOpen(false)} onDonate={() => setOpen(false)} />
     </div>
   );
