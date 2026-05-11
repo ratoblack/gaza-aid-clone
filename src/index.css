@@ -14,6 +14,19 @@
     --gold-light: 35 71% 67%;     /* #E8B86D */
     --olive: 84 13% 28%;          /* #4A5240 */
 
+    /* Spotlight Humanity tokens */
+    --sh-green: 154 60% 26%;          /* #1B6B4A */
+    --sh-green-dark: 154 60% 19%;     /* #134D36 */
+    --sh-green-light: 138 33% 93%;    /* #EAF4EE */
+    --sh-text: 0 0% 10%;              /* #1A1A1A */
+    --sh-text-secondary: 0 0% 33%;    /* #555555 */
+    --sh-text-muted: 0 0% 53%;        /* #888888 */
+    --sh-border: 0 0% 88%;            /* #E0E0E0 */
+    --sh-off-white: 0 0% 98%;         /* #F9F9F9 */
+    --sh-light-gray: 0 0% 95%;        /* #F2F2F2 */
+    --sh-red: 6 64% 46%;              /* #C0392B */
+    --sh-gold: 39 65% 47%;            /* #C5922A */
+
     /* Mapped semantic tokens (consumed by shadcn + Tailwind) */
     --background: var(--cream);
     --foreground: var(--charcoal);
