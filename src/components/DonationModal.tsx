@@ -78,7 +78,7 @@ const DonationModal = ({ isOpen, onDismiss, initialAmount }: DonationModalProps)
     if (ttq && typeof ttq.track === "function") {
       ttq.track(event, {
         value: selectedAmount,
-        currency: "USD",
+        currency: DONATION_CURRENCY,
         content_type: "product",
         content_id: isMonthly ? "monthly_donation" : "one_time_donation",
         description: isMonthly ? "Monthly donation" : "One-time donation",
