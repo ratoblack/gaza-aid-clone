@@ -1,10 +1,10 @@
 import FadeIn from "./FadeIn";
-import g1 from "@/assets/hr/final-cta.jpg";
-import g2 from "@/assets/hr/hero-dua.jpg";
-import g3 from "@/assets/hr/parcel-contents.jpg";
-import g4 from "@/assets/hr/testimony.jpg";
-import g5 from "@/assets/hr/reality-tap.jpg";
-import g6 from "@/assets/hr/how-we-deliver.jpg";
+import g1 from "@/assets/spotlight/gallery1.jpg";
+import g2 from "@/assets/spotlight/gallery2.jpg";
+import g3 from "@/assets/spotlight/gallery3.jpg";
+import g4 from "@/assets/spotlight/parcels.jpg";
+import g5 from "@/assets/spotlight/hotmeals.jpg";
+import g6 from "@/assets/spotlight/feed-families.jpg";
 
 const photos = [
   { src: g1, alt: "Family inside a tent waving while holding an open Spotlight Humanity food parcel", pos: "center 35%" },
