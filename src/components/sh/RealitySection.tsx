@@ -38,7 +38,7 @@ const RealitySection = () => {
           <FadeIn delay={0.15}>
             <p className="mt-6 font-sans text-[16px] text-sh-text-secondary leading-[1.7]">
               For two years, Spotlight Humanity teams have been on the ground — not sending money hoping it arrives,
-              but physically present, distributing food and water directly to displaced families.
+              but physically present, distributing food and water directly to displaced&nbsp;families.
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>
