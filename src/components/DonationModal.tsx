@@ -60,6 +60,7 @@ const DonationModal = ({ isOpen, onDismiss, initialAmount }: DonationModalProps)
 
   useEffect(() => {
     if (!isOpen) return;
+    if (initialAmount && initialAmount > 0) setSelectedAmount(initialAmount);
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") handleClose();
     };
@@ -71,7 +72,7 @@ const DonationModal = ({ isOpen, onDismiss, initialAmount }: DonationModalProps)
       document.body.style.overflow = prevOverflow;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  }, [isOpen, initialAmount]);
 
   const goToDonor = () => setStep("donor");
 
