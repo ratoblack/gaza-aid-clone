@@ -27,7 +27,7 @@ const SHHeader = () => {
         <button
           type="button"
           onClick={() => openDonate()}
-          className="inline-flex items-center bg-sh-green text-white font-sans font-semibold text-[13px] sm:text-[14px] px-4 sm:px-6 py-2 sm:py-2.5 rounded transition-colors hover:bg-sh-green-dark"
+          className="shrink-0 inline-flex items-center bg-sh-green text-white font-sans font-semibold text-[13px] sm:text-[14px] px-4 sm:px-6 py-2.5 sm:py-3 rounded transition-colors hover:bg-sh-green-dark"
         >
           Donate Now
         </button>
