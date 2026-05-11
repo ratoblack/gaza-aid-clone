@@ -37,7 +37,7 @@ const ProjectsSection = () => (
                 alt={b.alt}
                 loading="lazy"
                 className="w-full object-cover"
-                style={{ aspectRatio: "4 / 3" }}
+                style={{ aspectRatio: "4 / 3", objectPosition: "center 35%" }}
                 width={1200}
                 height={900}
               />
